@@ -467,6 +467,7 @@ public class DashBoardActivity extends AppCompatActivity implements NavigationVi
 
 
     public void facebook_implementation() {
+        
         callbackManager = CallbackManager.Factory.create();
         LoginManager.getInstance().logInWithReadPermissions(this, Arrays.asList("public_profile"));
         LoginManager.getInstance().registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
