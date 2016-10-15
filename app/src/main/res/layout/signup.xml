@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:background="@color/White"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/img_logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/ic_launcher"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"/>
+
+    <RelativeLayout
+        android:id="@+id/rel_sigup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:layout_below="@+id/img_logo">
+
+    <LinearLayout
+        android:id="@+id/ll_input_fields"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:orientation="vertical">
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/txt_input_layout_firstname"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:hintTextAppearance="@style/TextAppearence.App.TextInputLayout">
+
+        <EditText
+            android:id="@+id/edttxt_name"
+            android:hint="Name*"
+            style="@style/CTE_edit_text_pay_req_form"
+            android:layout_marginTop="2dp"
+            android:inputType="textCapSentences"
+            android:maxLength="26"
+
+            android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+            android:singleLine="true"
+            android:textColor="@color/Salmon"
+            android:visibility="visible"
+            android:windowSoftInputMode="adjustResize" />
+
+    </android.support.design.widget.TextInputLayout>
+        <TextView
+            android:id="@+id/txt_name_error"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/error_name"
+            android:textColor="@color/Red"
+            android:visibility="gone"
+            android:textSize="@dimen/error_field" />
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/txt_input_layout_password"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+
+            app:hintTextAppearance="@style/TextAppearence.App.TextInputLayout">
+
+            <EditText
+                android:id="@+id/edttxt_password"
+                android:hint="Password*"
+                style="@style/CTE_edit_text_pay_req_form"
+                android:layout_marginTop="2dp"
+                android:inputType="textCapSentences"
+                android:maxLength="26"
+
+                android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                android:singleLine="true"
+                android:textColor="@color/Salmon"
+                android:visibility="visible"
+                android:windowSoftInputMode="adjustResize" />
+        </android.support.design.widget.TextInputLayout>
+        <TextView
+            android:id="@+id/txt_password_error"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/error_password"
+            android:textColor="@color/Red"
+            android:visibility="gone"
+            android:textSize="@dimen/error_field" />
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/txt_input_layout_email"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:hintTextAppearance="@style/TextAppearence.App.TextInputLayout">
+
+        <EditText
+            android:id="@+id/edttxt_email"
+            android:hint="Email*"
+            style="@style/CTE_edit_text_pay_req_form"
+            android:layout_marginTop="2dp"
+            android:inputType="textEmailAddress"
+            android:maxLength="26"
+
+            android:singleLine="true"
+            android:textColor="@color/Salmon"
+            android:visibility="visible"
+            android:windowSoftInputMode="adjustResize" />
+    </android.support.design.widget.TextInputLayout>
+        <TextView
+            android:id="@+id/txt_email_error"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/error_email"
+            android:textColor="@color/Red"
+            android:visibility="gone"
+            android:textSize="@dimen/error_field" />
+
+    </LinearLayout>
+
+
+
+        <Button
+            android:id="@+id/btn_ctg_continue"
+            android:layout_width="180dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center_horizontal"
+            android:background="@color/colorPrimary"
+            android:padding="5dp"
+            android:layout_below="@+id/ll_input_fields"
+            android:text="@string/btn_submit"
+            android:textColor="@color/White"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="50dp"
+            android:visibility="visible"
+            android:textSize="17dp" />
+    <com.github.rahatarmanahmed.cpv.CircularProgressView
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/progress_view"
+        android:layout_centerInParent="true"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        app:cpv_animAutostart="true"
+        android:visibility="gone"
+        android:layout_marginTop="50dp"
+        android:layout_below="@+id/ll_input_fields"
+        app:cpv_indeterminate="true" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/rel_signin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:layout_below="@+id/img_logo">
+        <RelativeLayout
+            android:id="@+id/rel_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        <LinearLayout
+            android:id="@+id/ll_sinin_input_fields"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:orientation="vertical">
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/txt_input_sinin_name"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+
+            app:hintTextAppearance="@style/TextAppearence.App.TextInputLayout">
+
+            <EditText
+                android:id="@+id/edttxt_sigin_email"
+                android:hint="Email*"
+                style="@style/CTE_edit_text_pay_req_form"
+                android:layout_marginTop="2dp"
+                android:inputType="textEmailAddress"
+                android:maxLength="26"
+
+                android:singleLine="true"
+                android:textColor="@color/Salmon"
+                android:visibility="visible"
+                android:windowSoftInputMode="adjustResize" />
+        </android.support.design.widget.TextInputLayout>
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/txt_input_sigin_pwd"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:hintTextAppearance="@style/TextAppearence.App.TextInputLayout">
+
+            <EditText
+                android:id="@+id/edttxt_signin_pwd"
+                android:hint="Password*"
+                style="@style/CTE_edit_text_pay_req_form"
+                android:layout_marginTop="2dp"
+                android:inputType="textPassword"
+                android:maxLength="26"
+
+                android:singleLine="true"
+                android:textColor="@color/Salmon"
+                android:visibility="visible"
+                android:windowSoftInputMode="adjustResize" />
+        </android.support.design.widget.TextInputLayout>
+
+            <Button
+                android:id="@+id/btn_signin"
+                android:layout_width="180dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center_horizontal"
+                android:background="@color/colorPrimary"
+                android:padding="5dp"
+                android:layout_below="@+id/ll_input_fields"
+                android:text="@string/btn_signin"
+                android:textColor="@color/White"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="50dp"
+                android:visibility="visible"
+                android:textSize="17dp" />
+
+        </LinearLayout>
+        <com.github.rahatarmanahmed.cpv.CircularProgressView
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/progress_view_sign"
+            android:layout_centerInParent="true"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            app:cpv_animAutostart="true"
+            android:visibility="gone"
+            android:layout_marginTop="50dp"
+            android:layout_below="@+id/ll_sinin_input_fields"
+            app:cpv_indeterminate="true" />
+        </RelativeLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/rel_view">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorPrimary"
+                android:textSize="12dp"
+                android:text="@string/not_a_member"/>
+            <TextView
+                android:id="@+id/txt_sign_up_now"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorPrimary"
+                android:textSize="12dp"
+                android:text="@string/sign_up_now"/>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+</RelativeLayout>

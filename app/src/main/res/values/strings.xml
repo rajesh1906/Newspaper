@@ -1,0 +1,157 @@
+<resources>
+    <string name="app_name">News paper</string>
+    <string name="action_settings">Settings</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="facebook_app_id">649205268572768</string>
+
+    <!--papers list-->
+    <string-array name="english_paper">
+        <item>The Times of India</item>
+        <item>Hindustan Times</item>
+        <item>Indian Express</item>
+        <item>The Hindu</item>
+        <item>Deccan Chronicle</item>
+        <item>Business Standard</item>
+    </string-array>
+
+    <string-array name="telugu_paper">
+        <item>Eenadu</item>
+        <item>Andhra Bhoomi</item>
+        <item>Andhra Jyothi</item>
+        <item>Sakshi</item>
+        <item>Namasthe Telangana</item>
+        <item>Vartha</item>
+    </string-array>
+
+    <string-array name="hindi_paper">
+        <item>Amar Ujala</item>
+        <item>Dainik Jagran</item>
+        <item>Hindi Milap</item>
+        <item>Nava Bharat </item>
+        <item> Prabhat Khabar</item>
+        <item>National Duniya</item>
+    </string-array>
+    <string-array name="tamil_paper"
+        >
+        <item>Dina Thanthi</item>
+        <item>Dinakaran</item>
+        <item>Dinamalar</item>
+        <item>Dina Mani</item>
+        <item>Maalai Malar</item>
+        <item>Thinaboomi</item>
+
+
+    </string-array>
+    <string-array name="malayalam_paper"
+        >
+        <item>Malayala Manorama</item>
+        <item>Mathrubhumi</item>
+        <item>Deshabhimani</item>
+        <item>Madhyamam</item>
+        <item>Mangalam</item>
+        <item>Kerala Kaumudi</item>
+
+
+    </string-array>
+    <!--images -->
+    <integer-array name="english_paper_images">
+        <item>@drawable/times_of_india</item>
+        <item>@drawable/hindustan_times</item>
+        <item>@drawable/indian_express</item>
+        <item>@drawable/the_hindu</item>
+        <item>@drawable/dc</item>
+    </integer-array>
+
+    <string-array name="telugu_news_channels">
+        <item>tv9 latest telugu news</item>
+        <item>ntv latest telugu news</item>
+        <item>tv5 latest telugu news</item>
+        <item>v6 latest telugu news</item>
+        <item>sakshi latest telugu news</item>
+        <item>abn latest telugu news</item>
+    </string-array>
+
+    <string-array name="english_news_channels">
+        <item>Times Now latest english news</item>
+        <item>BBC latest english news</item>
+        <item>India Today Television latest english news</item>
+        <item>News X latest english news</item>
+        <item>NDTV 24x7 latest english news</item>
+        <item>CCTV News latest english news</item>
+    </string-array>
+
+    <string-array name="sharing_items">
+        <item>Facebook</item>
+        <item>Twitter</item>
+        <item>Imguler</item>
+        <item>Instagram</item>
+
+
+
+    </string-array>
+
+    <string-array name="hindi_news_channels">
+        <item>AajTak latest hindi news</item>
+        <item>NDTV India latest hindi news</item>
+        <item>Zee News latest hindi news</item>
+        <item>News 24 latest hindi news</item>
+        <item>DD News latest hindi news</item>
+        <item>Live India latest hindi news</item>
+    </string-array>
+    <string-array name="tamil_news_channels">
+        <item>Jaya Plus latest tamil news</item>
+        <item>Puthiya Thalaimurai TV tamil news</item>
+        <item>Raj News 24X7 latest tamil news</item>
+        <item>Sun News latest tamil news</item>
+        <item>Thanthi TV latest tamil news</item>
+        <item>News18 Tamil Nadu latest tamil news</item>
+    </string-array>
+    <string-array name="malayalam_news_channels">
+        <item>Asianet News latest malayalam news</item>
+        <item>Indiavision latest malayalam news</item>
+        <item>Jaihind TV latest malayalam news</item>
+        <item>Janam TV latest malayalam news</item>
+        <item>Kaumudy TV latest malayalam news</item>
+        <item>Manorama News latest malayalam news</item>
+    </string-array>
+
+    <!--news channels-->
+    <string-array name="news_channels">
+        <item>English</item>
+        <item>Telugu</item>
+        <item>Hindi</item>
+        <item>Tamil</item>
+        <item>Malayalam</item>
+    </string-array>
+
+
+
+
+    <string name="youtube_api_key">AIzaSyANC7YXqT-P7JYbsFShIl_6dhAEdkfYIEo</string>
+    <string name="player_error">Error initializing YouTube player</string>
+    <string name="seek_to">Jump To</string>
+    <string name="seek_to_hint">Seconds</string>
+
+    <string name="alert_title">Alert!!!...</string>
+    <string name="network_error">Please check your internet connection</string>
+    <string name="search_error">Please vaild search</string>
+    <string name="ok_btn">OK</string>
+    <string name="btn_submit">Sign Up</string>
+    <string name="btn_signin">Sign In</string>
+
+    <!--headers-->
+    <string name="not_a_member">Not a member?</string>
+    <string name="sign_up_now">Sign up now.</string>
+
+<!--errors-->
+    <string name="error_name">Please enter valid name</string>
+    <string name="error_password">Please enter valid password</string>
+    <string name="error_email">Please enter valid email</string>
+    <string name="error_email_auth">Incorrect email address</string>
+    <string name="error_password_auth">Incorrect password</string>
+
+    <!-- Twitter Configurations -->
+    <string name="twitter_callback">http://stellentsoft.com/</string>
+    <string name="twitter_oauth_verifier">oauth_verifier</string>
+</resources>

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+  <!--  <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_camera"
+            android:title="Import" />
+        <item
+            android:id="@+id/nav_gallery"
+            android:title="Gallery" />
+        <item
+            android:id="@+id/nav_slideshow"
+            android:title="Slideshow" />
+        <item
+            android:id="@+id/nav_manage"
+            android:title="Tools" />
+    </group>-->
+
+    <item android:title="English News">
+        <menu>
+            <item
+                android:id="@+id/tio"
+                android:icon="@drawable/ic_launcher"
+                android:title="The Times of India" />
+            <item
+                android:id="@+id/hindu"
+                android:icon="@drawable/the_hindu"
+                android:title="The Hindu" />
+            <item
+                android:id="@+id/hindustan_times"
+                android:icon="@drawable/hindustan_times"
+                android:title="Hindustan Times" />
+            <item
+                android:id="@+id/indian_express"
+                android:icon="@drawable/indian_express"
+                android:title="Indian Express" />
+            <item
+                android:id="@+id/dc"
+                android:icon="@drawable/dc"
+                android:title="Deccan Chronicle" />
+            <item
+                android:id="@+id/businessstandard"
+                android:icon="@drawable/businessstandard"
+                android:title="Business Standard" />
+        </menu>
+    </item>
+    <item android:title="Telugu News">
+        <menu>
+            <item
+                android:id="@+id/eenadu"
+                android:title="Eenadu" />
+            <item
+                android:id="@+id/andhra_bhoomi"
+                android:title="Andhra Bhoomi" />
+            <item
+                android:id="@+id/andhra_joythi"
+                android:title="Andhra Jyothi" />
+            <item
+                android:id="@+id/sakshi"
+                android:title="Sakshi" />
+            <item
+                android:id="@+id/namaste_telangana"
+                android:title="Namasthe Telangana" />
+            <item
+                android:id="@+id/vartha"
+                android:title="Vartha" />
+        </menu>
+    </item>
+
+    <item android:title="Hindi News">
+        <menu>
+            <item
+                android:id="@+id/au"
+                android:title="Amar Ujala" />
+            <item
+                android:id="@+id/dj"
+                android:title="Dainik Jagran" />
+            <item
+                android:id="@+id/hm"
+                android:title="Hindi Milap" />
+            <item
+                android:id="@+id/nav_barth"
+                android:title="Nava Bharat" />
+            <item
+                android:id="@+id/pb"
+                android:title="Prabhat Khabar" />
+            <item
+                android:id="@+id/nd"
+                android:title="National Duniya" />
+        </menu>
+    </item>
+
+</menu>
