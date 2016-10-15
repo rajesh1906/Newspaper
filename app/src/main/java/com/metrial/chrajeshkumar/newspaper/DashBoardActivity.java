@@ -327,8 +327,6 @@ public class DashBoardActivity extends AppCompatActivity implements NavigationVi
         Palette.from(bitmap).generate(new Palette.PaletteAsyncListener() {
             @Override
             public void onGenerated(Palette palette) {
-//                collapsing_toolbar.setContentScrimColor(palette.getMutedColor(R.color.colorPrimary));
-//                collapsing_toolbar.setStatusBarScrimColor(palette.getMutedColor(R.attr.colorPrimaryDark));
             }
         });
     }
@@ -467,7 +465,7 @@ public class DashBoardActivity extends AppCompatActivity implements NavigationVi
 
 
     public void facebook_implementation() {
-        
+
         callbackManager = CallbackManager.Factory.create();
         LoginManager.getInstance().logInWithReadPermissions(this, Arrays.asList("public_profile"));
         LoginManager.getInstance().registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
