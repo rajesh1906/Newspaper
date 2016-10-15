@@ -208,6 +208,8 @@ public class DashBoardActivity extends AppCompatActivity implements NavigationVi
         grid_malayalam.setAdapter(new Dashboard(this, this.getResources().getStringArray(R.array.malayalam_paper), Papers_icon.malayalam_papers));
         grid_malayalam.setExpanded(true);
 
+
+
         appbar_layout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
             @Override
             public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
