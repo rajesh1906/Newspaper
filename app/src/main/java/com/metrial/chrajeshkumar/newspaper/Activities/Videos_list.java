@@ -191,6 +191,7 @@ public class Videos_list extends YouTubeBaseActivity implements APIService, Hand
         edittext_search.requestFocus();
         edittext_search.setFocusable(true);
         edittext_search.setCursorVisible(true);
+
         Control.control_flow(ConStants.KEYBOARD_CONTROL, this);
     }
 
