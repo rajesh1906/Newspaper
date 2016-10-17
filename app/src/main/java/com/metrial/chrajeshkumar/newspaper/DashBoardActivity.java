@@ -10,6 +10,7 @@ import android.content.pm.Signature;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.preference.PreferenceManager;
@@ -20,7 +21,6 @@ import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.NestedScrollView;
-import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.graphics.Palette;
 import android.support.v7.widget.CardView;
@@ -73,6 +73,7 @@ import java.util.HashMap;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import twitter4j.StatusUpdate;
 import twitter4j.TwitterException;
 import twitter4j.TwitterFactory;
 import twitter4j.User;
@@ -148,8 +149,11 @@ public class DashBoardActivity extends AppCompatActivity implements NavigationVi
     private static final String PREF_KEY_OAUTH_SECRET = "oauth_token_secret";
     private static final String PREF_KEY_TWITTER_LOGIN = "is_twitter_loggedin";
     private static final String PREF_USER_NAME = "twitter_user_name";
+    private String oAuthVerifier = null;
     private static RequestToken requestToken;
     private static twitter4j.Twitter twitter;
+    String consumerKey,consumerSecret,callbackUrl;
+    AccessToken accessToken;
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
      * See https://g.co/AppIndexing/AndroidStudio for more information.
@@ -207,7 +211,6 @@ public class DashBoardActivity extends AppCompatActivity implements NavigationVi
         grid_malayalam.setNumColumns(2);
         grid_malayalam.setAdapter(new Dashboard(this, this.getResources().getStringArray(R.array.malayalam_paper), Papers_icon.malayalam_papers));
         grid_malayalam.setExpanded(true);
-
 
 
         appbar_layout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
@@ -281,15 +284,24 @@ public class DashBoardActivity extends AppCompatActivity implements NavigationVi
                     txt_sticky.setText("Hindi");
                 } else if (scrollY > 4070 && scrollY < 5400) {
                     txt_sticky.setText("Tamil");
-                }else
-                {
+                } else {
                     txt_sticky.setText("Malayalam");
                 }
             }
         });
+
+
+        initTwitterConfigs();
+
     }
 
-
+    /* Reading twitter essential configuration parameters from strings.xml */
+    private void initTwitterConfigs() {
+        consumerKey = Twitter.consumer_key;
+        consumerSecret = Twitter.secret_key;
+        callbackUrl = getString(R.string.twitter_callback);
+        oAuthVerifier = getString(R.string.twitter_oauth_verifier);
+    }
     public void share_items() {
 
         if (recycler_share.isShown()) {
@@ -529,7 +541,76 @@ public class DashBoardActivity extends AppCompatActivity implements NavigationVi
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        callbackManager.onActivityResult(requestCode, resultCode, data);
+//        callbackManager.onActivityResult(requestCode, resultCode, data);
+
+        try {
+            String verifier = data.getExtras().getString(oAuthVerifier);
+            accessToken = twitter.getOAuthAccessToken(requestToken, verifier);
+            saveTwitterInfo(accessToken);
+        } catch (Exception e) {
+
+            e.printStackTrace();
+        }
+        if (requestCode == WEBVIEW_REQUEST_CODE) {
+
+            if (resultCode == -1 && data != null) {
+                new updateTwitterStatus("Check out this Newspaper: testing").execute();
+            } else {
+                Toast.makeText(activity, "Posting failed to Twitter!", Toast.LENGTH_SHORT).show();
+            }
+        }
+
+    }
+
+
+    class updateTwitterStatus extends AsyncTask<String, String, Void> {
+        String shareUrl;
+        twitter4j.Status response;
+
+        updateTwitterStatus(String shareUrl) {
+            this.shareUrl = shareUrl;
+
+        }
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        protected Void doInBackground(String... args) {
+
+            String status = shareUrl;
+            try {
+                ConfigurationBuilder builder = new ConfigurationBuilder();
+                builder.setOAuthConsumerKey(Twitter.consumer_key);
+                builder.setOAuthConsumerSecret(Twitter.secret_key);
+
+                // Access Token
+                String access_token = mSharedPreferences.getString(PREF_KEY_OAUTH_TOKEN, "");
+                // Access Token Secret
+                String access_token_secret = mSharedPreferences.getString(PREF_KEY_OAUTH_SECRET, "");
+
+//				AccessToken accessToken = new AccessToken(oAuthVerifier, consumerSecret);
+                AccessToken accessToken = new AccessToken(access_token,
+                        access_token_secret);
+                twitter4j.Twitter twitter = new TwitterFactory(builder.build()).getInstance(accessToken);
+
+                // Update status
+                StatusUpdate statusUpdate = new StatusUpdate(status);
+                response = twitter.updateStatus(statusUpdate);
+            } catch (TwitterException e) {
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void result) {
+            if (response != null) {
+                Toast.makeText(activity, "Posted to Twitter!", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(activity, "Posting failed to Twitter!", Toast.LENGTH_SHORT).show();
+            }
+        }
 
     }
 
@@ -583,14 +664,11 @@ public class DashBoardActivity extends AppCompatActivity implements NavigationVi
             user = twitter.showUser(userID);
 
             String username = user.getName();
-
-			/* Storing oAuth tokens to shared preferences */
-            //Log.e("user name is ","<><><>"+username);
             mSharedPreferences = PreferenceManager
                     .getDefaultSharedPreferences(this);
             SharedPreferences.Editor e = mSharedPreferences.edit();
-            e.putString(Twitter.consumer_key, accessToken.getToken());
-            e.putString(Twitter.secret_key, accessToken.getTokenSecret());
+            e.putString(PREF_KEY_OAUTH_TOKEN, accessToken.getToken());
+            e.putString(PREF_KEY_OAUTH_SECRET, accessToken.getTokenSecret());
             e.putBoolean(PREF_KEY_TWITTER_LOGIN, true);
             e.putString(PREF_USER_NAME, username);
             e.commit();
@@ -608,8 +686,8 @@ public class DashBoardActivity extends AppCompatActivity implements NavigationVi
             facebook_implementation();
         } else if (v.equals(fab_arc_twitter)) {
             Log.e("fab twitter", "<><>");
-//            twitter_implementation();
-            Toast.makeText(this, "Under construction", Toast.LENGTH_LONG).show();
+            twitter_implementation();
+//            Toast.makeText(this, "Under construction", Toast.LENGTH_LONG).show();
 
         } else if (v.equals(fab_arc_instagram)) {
             Log.e("fab instagram", "<><>");
