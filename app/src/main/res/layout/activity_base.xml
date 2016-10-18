@@ -22,99 +22,105 @@
             app:contentScrim="?attr/colorPrimary"
             app:expandedTitleMarginStart="@dimen/expanded_toolbar_title_margin_start"
             app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/appbar_layout"
                 android:orientation="vertical">
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                android:visibility="visible"
-                android:orientation="horizontal">
 
-                <ImageView
-                    android:id="@+id/img_header_paper_top"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:visibility="visible"
-                    android:layout_marginLeft="10dp"
-                    android:layout_gravity="center_vertical"
-                    android:src="@mipmap/ic_launcher"/>
-                <TextView
-                   android:id="@+id/txt_header_top"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:text="News Paper"
-                    android:textSize="20dp"
-                    android:visibility="visible"
-                    android:layout_marginLeft="10dp"
-                    android:typeface="serif"
-                    android:textColor="@color/White"/>
-            </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    android:orientation="horizontal"
+                    android:visibility="visible">
 
-            <LinearLayout
-                android:id="@+id/ll_header"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                    <ImageView
+                        android:id="@+id/img_header_paper_top"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="10dp"
+                        android:src="@mipmap/ic_launcher"
+                        android:visibility="visible" />
 
+                    <TextView
+                        android:id="@+id/txt_header_top"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="10dp"
+                        android:text="News Paper"
+                        android:textColor="@color/White"
+                        android:textSize="20dp"
+                        android:typeface="serif"
+                        android:visibility="visible" />
+                </LinearLayout>
 
-                android:background="#fff"
-
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/txt_header"
-                    style="@style/header"
+                <LinearLayout
+                    android:id="@+id/ll_header"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="?attr/actionBarSize"
-                    android:gravity="center_horizontal"
-                    android:text="News Channels"
-                    android:visibility="visible" />
 
-                <android.support.v7.widget.RecyclerView
-                    android:id="@+id/horizontal_recycler_view"
-                    android:layout_width="match_parent"
-                    android:layout_height="150dp"
-                    android:layout_below="@+id/txt_header"
 
-                    android:background="@color/White" />
+                    android:background="#fff"
+
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/txt_header"
+                        style="@style/header"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="?attr/actionBarSize"
+                        android:gravity="center_horizontal"
+                        android:text="News Channels"
+                        android:visibility="visible" />
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/horizontal_recycler_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="150dp"
+                        android:layout_below="@+id/txt_header"
+
+                        android:background="@color/White" />
+                </LinearLayout>
+
             </LinearLayout>
 
-            </LinearLayout>
             <android.support.v7.widget.Toolbar
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                app:layout_collapseMode="pin"
                 android:visibility="gone"
+                app:layout_collapseMode="pin"
                 app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
                 app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="horizontal">
 
-                <ImageView
-                    android:id="@+id/img_header_paper"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:visibility="gone"
-                    android:layout_gravity="center_vertical"
-                    android:src="@mipmap/ic_launcher"/>
-        <TextView
-            android:id="@+id/txt_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:text="News Paper"
-            android:textSize="20dp"
-            android:visibility="gone"
-            android:layout_marginLeft="10dp"
-            android:typeface="serif"
-            android:textColor="@color/White"/>
+                    <ImageView
+                        android:id="@+id/img_header_paper"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="center_vertical"
+                        android:src="@mipmap/ic_launcher"
+                        android:visibility="gone" />
+
+                    <TextView
+                        android:id="@+id/txt_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="10dp"
+                        android:text="News Paper"
+                        android:textColor="@color/White"
+                        android:textSize="20dp"
+                        android:typeface="serif"
+                        android:visibility="gone" />
                 </LinearLayout>
             </android.support.v7.widget.Toolbar>
 
@@ -129,201 +135,203 @@
         android:layout_height="match_parent"
         android:background="@color/colorPrimary"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
-<RelativeLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
 
-        <LinearLayout
-            android:id="@+id/linearLayout"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginBottom="10dp"
-            android:background="@color/White"
-            android:orientation="vertical">
+            android:layout_height="match_parent">
 
-            <TextView
-                android:id="@+id/txt_english"
-                style="@style/header"
+            <LinearLayout
+                android:id="@+id/linearLayout"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
-                android:shadowColor="@android:color/holo_red_dark"
-                android:text="English" />
+                android:layout_height="match_parent"
+                android:layout_marginBottom="10dp"
+                android:background="@color/White"
+                android:orientation="vertical">
 
-            <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
-                android:id="@+id/card_view"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_gravity="center"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                card_view:cardElevation="10dp">
+                <TextView
+                    android:id="@+id/txt_english"
+                    style="@style/header"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:shadowColor="@android:color/holo_red_dark"
+                    android:text="English" />
 
-                <com.metrial.chrajeshkumar.newspaper.Helper.CustomeGridview
-                    android:id="@+id/grid"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_below="@+id/txt_english"
-                    android:layout_marginBottom="5dp"
-                    android:layout_marginTop="5dp"
-                    android:adjustViewBounds="true"
-                    android:columnWidth="50dp"
-                    android:gravity="center"
+                <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                    android:id="@+id/card_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    card_view:cardElevation="10dp">
 
-
-                    android:numColumns="2"
-
-                    />
-            </android.support.v7.widget.CardView>
-
-            <TextView
-                android:id="@+id/txt_telugu"
-                style="@style/header"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
-                android:text="Telugu" />
-
-            <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
-
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_gravity="center"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                card_view:cardElevation="10dp">
-
-                <com.metrial.chrajeshkumar.newspaper.Helper.CustomeGridview
-                    android:id="@+id/grid_telugu"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_below="@+id/txt_telugu"
-                    android:layout_marginBottom="5dp"
-                    android:layout_marginTop="5dp"
-                    android:adjustViewBounds="true"
-                    android:columnWidth="50dp"
-                    android:gravity="center"
-                    android:horizontalSpacing="10dp"
-                    android:listSelector="#00000000"
-                    android:numColumns="2"
-                    android:stretchMode="columnWidth"
-                    android:verticalSpacing="10dp"
-                    android:visibility="visible" />
-
-            </android.support.v7.widget.CardView>
-
-            <TextView
-                android:id="@+id/txt_hindi"
-                style="@style/header"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
-                android:text="Hindi" />
-
-            <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
-
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_gravity="center"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                card_view:cardElevation="10dp">
-
-                <com.metrial.chrajeshkumar.newspaper.Helper.CustomeGridview
-                    android:id="@+id/grid_hindi"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_below="@+id/txt_english"
-                    android:layout_marginBottom="5dp"
-                    android:layout_marginTop="5dp"
-                    android:adjustViewBounds="true"
-                    android:columnWidth="50dp"
-                    android:gravity="center"
-                    android:horizontalSpacing="10dp"
-                    android:listSelector="#00000000"
-                    android:numColumns="2"
-                    android:stretchMode="columnWidth"
-                    android:verticalSpacing="10dp" />
-            </android.support.v7.widget.CardView>
-
-            <TextView
-                android:id="@+id/txt_tamil"
-                style="@style/header"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
-                android:text="Tamil" />
-
-            <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
-
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_gravity="center"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                card_view:cardElevation="10dp">
-
-                <com.metrial.chrajeshkumar.newspaper.Helper.CustomeGridview
-                    android:id="@+id/grid_tamil"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_below="@+id/txt_english"
-                    android:layout_marginBottom="5dp"
-                    android:layout_marginTop="5dp"
-                    android:adjustViewBounds="true"
-                    android:columnWidth="50dp"
-                    android:gravity="center"
-                    android:horizontalSpacing="10dp"
-                    android:listSelector="#00000000"
-                    android:numColumns="2"
-                    android:stretchMode="columnWidth"
-                    android:verticalSpacing="10dp" />
-            </android.support.v7.widget.CardView>
-
-            <TextView
-                android:id="@+id/txt_malayalam"
-                style="@style/header"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
-                android:text="Malayalam" />
-
-            <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
-
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_gravity="center"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                card_view:cardElevation="10dp">
-
-                <com.metrial.chrajeshkumar.newspaper.Helper.CustomeGridview
-                    android:id="@+id/grid_malayalam"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_below="@+id/txt_english"
-                    android:layout_marginBottom="5dp"
-                    android:layout_marginTop="5dp"
-                    android:adjustViewBounds="true"
-                    android:columnWidth="50dp"
-                    android:gravity="center"
-                    android:horizontalSpacing="10dp"
-                    android:listSelector="#00000000"
-                    android:numColumns="2"
-                    android:stretchMode="columnWidth"
-                    android:verticalSpacing="10dp" />
-            </android.support.v7.widget.CardView>
-        </LinearLayout>
+                    <com.metrial.chrajeshkumar.newspaper.Helper.CustomeGridview
+                        android:id="@+id/grid"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_below="@+id/txt_english"
+                        android:layout_marginBottom="5dp"
+                        android:layout_marginTop="5dp"
+                        android:adjustViewBounds="true"
+                        android:columnWidth="50dp"
+                        android:gravity="center"
 
 
-</RelativeLayout>
+                        android:numColumns="2"
+
+                        />
+                </android.support.v7.widget.CardView>
+
+                <TextView
+                    android:id="@+id/txt_telugu"
+                    style="@style/header"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:text="Telugu" />
+
+                <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    card_view:cardElevation="10dp">
+
+                    <com.metrial.chrajeshkumar.newspaper.Helper.CustomeGridview
+                        android:id="@+id/grid_telugu"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_below="@+id/txt_telugu"
+                        android:layout_marginBottom="5dp"
+                        android:layout_marginTop="5dp"
+                        android:adjustViewBounds="true"
+                        android:columnWidth="50dp"
+                        android:gravity="center"
+                        android:horizontalSpacing="10dp"
+                        android:listSelector="#00000000"
+                        android:numColumns="2"
+                        android:stretchMode="columnWidth"
+                        android:verticalSpacing="10dp"
+                        android:visibility="visible" />
+
+                </android.support.v7.widget.CardView>
+
+                <TextView
+                    android:id="@+id/txt_hindi"
+                    style="@style/header"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:text="Hindi" />
+
+                <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    card_view:cardElevation="10dp">
+
+                    <com.metrial.chrajeshkumar.newspaper.Helper.CustomeGridview
+                        android:id="@+id/grid_hindi"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_below="@+id/txt_english"
+                        android:layout_marginBottom="5dp"
+                        android:layout_marginTop="5dp"
+                        android:adjustViewBounds="true"
+                        android:columnWidth="50dp"
+                        android:gravity="center"
+                        android:horizontalSpacing="10dp"
+                        android:listSelector="#00000000"
+                        android:numColumns="2"
+                        android:stretchMode="columnWidth"
+                        android:verticalSpacing="10dp" />
+                </android.support.v7.widget.CardView>
+
+                <TextView
+                    android:id="@+id/txt_tamil"
+                    style="@style/header"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:text="Tamil" />
+
+                <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    card_view:cardElevation="10dp">
+
+                    <com.metrial.chrajeshkumar.newspaper.Helper.CustomeGridview
+                        android:id="@+id/grid_tamil"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_below="@+id/txt_english"
+                        android:layout_marginBottom="5dp"
+                        android:layout_marginTop="5dp"
+                        android:adjustViewBounds="true"
+                        android:columnWidth="50dp"
+                        android:gravity="center"
+                        android:horizontalSpacing="10dp"
+                        android:listSelector="#00000000"
+                        android:numColumns="2"
+                        android:stretchMode="columnWidth"
+                        android:verticalSpacing="10dp" />
+                </android.support.v7.widget.CardView>
+
+                <TextView
+                    android:id="@+id/txt_malayalam"
+                    style="@style/header"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:text="Malayalam" />
+
+                <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    card_view:cardElevation="10dp">
+
+                    <com.metrial.chrajeshkumar.newspaper.Helper.CustomeGridview
+                        android:id="@+id/grid_malayalam"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_below="@+id/txt_english"
+                        android:layout_marginBottom="5dp"
+                        android:layout_marginTop="5dp"
+                        android:adjustViewBounds="true"
+                        android:columnWidth="50dp"
+                        android:gravity="center"
+                        android:horizontalSpacing="10dp"
+                        android:listSelector="#00000000"
+                        android:numColumns="2"
+                        android:stretchMode="columnWidth"
+                        android:verticalSpacing="10dp" />
+                </android.support.v7.widget.CardView>
+            </LinearLayout>
+
+
+        </RelativeLayout>
 
     </android.support.v4.widget.NestedScrollView>
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -333,34 +341,37 @@
 
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
             android:gravity="center_horizontal"
-            android:typeface="serif"
+            android:paddingBottom="5dp"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
             android:paddingTop="3dp"
-            android:paddingBottom="5dp"
-            android:textSize="20dp"
-            android:textColor="@color/White"
-            android:background="@color/colorPrimary"
-            android:visibility="gone"
             android:shadowColor="@android:color/holo_red_dark"
-            android:text="English" />
+            android:text="English"
+            android:textColor="@color/White"
+            android:textSize="20dp"
+            android:typeface="serif"
+            android:visibility="gone" />
+
         <com.sa90.materialarcmenu.ArcMenu
             android:id="@+id/arcmenu"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
             android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
             android:layout_marginTop="20dp"
             app:menu_color="@color/colorPrimary"
             app:menu_open="arc_left"
             app:menu_scr="@drawable/share">
+
             <android.support.design.widget.FloatingActionButton
                 android:id="@+id/fab_arc_whatsapp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/whatsapp"
                 app:backgroundTint="@color/colorPrimary" />
+
             <android.support.design.widget.FloatingActionButton
                 android:id="@+id/fab_arc_fb"
                 android:layout_width="wrap_content"
@@ -374,9 +385,6 @@
                 android:layout_height="wrap_content"
                 android:src="@drawable/twitter"
                 app:backgroundTint="@color/colorPrimary" />
-
-
-
 
 
         </com.sa90.materialarcmenu.ArcMenu>
