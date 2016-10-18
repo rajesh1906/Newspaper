@@ -355,7 +355,12 @@
             app:menu_color="@color/colorPrimary"
             app:menu_open="arc_left"
             app:menu_scr="@drawable/share">
-
+            <android.support.design.widget.FloatingActionButton
+                android:id="@+id/fab_arc_whatsapp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/whatsapp"
+                app:backgroundTint="@color/colorPrimary" />
             <android.support.design.widget.FloatingActionButton
                 android:id="@+id/fab_arc_fb"
                 android:layout_width="wrap_content"
@@ -370,20 +375,9 @@
                 android:src="@drawable/twitter"
                 app:backgroundTint="@color/colorPrimary" />
 
-            <android.support.design.widget.FloatingActionButton
-                android:id="@+id/fab_arc_instagram"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/instagram"
-                app:backgroundTint="@color/colorPrimary" />
 
-            <android.support.design.widget.FloatingActionButton
-                android:id="@+id/fab_arc_linkedin"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:src="@drawable/linkedin"
-                app:backgroundTint="@color/colorPrimary" />
+
+
 
         </com.sa90.materialarcmenu.ArcMenu>
 

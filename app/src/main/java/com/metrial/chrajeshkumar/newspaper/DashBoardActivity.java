@@ -112,10 +112,8 @@ public class DashBoardActivity extends AppCompatActivity implements NavigationVi
     FloatingActionButton fab_arc_fb;
     @Bind(R.id.fab_arc_twitter)
     FloatingActionButton fab_arc_twitter;
-    @Bind(R.id.fab_arc_instagram)
-    FloatingActionButton fab_arc_instagram;
-    @Bind(R.id.fab_arc_linkedin)
-    FloatingActionButton fab_arc_linkedin;
+    @Bind(R.id.fab_arc_whatsapp)
+    FloatingActionButton fab_arc_whatsapp;
     @Bind(R.id.appbar_layout)
     AppBarLayout appbar_layout;
     @Bind(R.id.img_header_paper)
@@ -152,7 +150,7 @@ public class DashBoardActivity extends AppCompatActivity implements NavigationVi
     private String oAuthVerifier = null;
     private static RequestToken requestToken;
     private static twitter4j.Twitter twitter;
-    String consumerKey,consumerSecret,callbackUrl;
+    String consumerKey, consumerSecret, callbackUrl;
     AccessToken accessToken;
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
@@ -264,8 +262,7 @@ public class DashBoardActivity extends AppCompatActivity implements NavigationVi
         //fab items
         fab_arc_fb.setOnClickListener(this);
         fab_arc_twitter.setOnClickListener(this);
-        fab_arc_instagram.setOnClickListener(this);
-        fab_arc_linkedin.setOnClickListener(this);
+        fab_arc_whatsapp.setOnClickListener(this);
 
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
@@ -302,6 +299,7 @@ public class DashBoardActivity extends AppCompatActivity implements NavigationVi
         callbackUrl = getString(R.string.twitter_callback);
         oAuthVerifier = getString(R.string.twitter_oauth_verifier);
     }
+
     public void share_items() {
 
         if (recycler_share.isShown()) {
@@ -689,14 +687,35 @@ public class DashBoardActivity extends AppCompatActivity implements NavigationVi
             twitter_implementation();
 //            Toast.makeText(this, "Under construction", Toast.LENGTH_LONG).show();
 
-        } else if (v.equals(fab_arc_instagram)) {
+        } else if (v.equals(fab_arc_whatsapp)) {
             Log.e("fab instagram", "<><>");
-
-
-        } else if (v.equals(fab_arc_linkedin)) {
-            Log.e("fab linked in", "<><>");
-            Toast.makeText(this, "Under construction", Toast.LENGTH_LONG).show();
+            Whatsapp_Implementation();
 
         }
+    }
+
+
+    public void Whatsapp_Implementation() {
+        PackageManager pm = getPackageManager();
+        try {
+
+            Intent waIntent = new Intent(Intent.ACTION_SEND);
+            waIntent.setType("text/plain");
+            String text = "YOUR TEXT HERE";
+
+            PackageInfo info = pm.getPackageInfo("com.whatsapp", PackageManager.GET_META_DATA);
+            //Check if package exists or not. If not then code
+            //in catch block will be called
+            waIntent.setPackage("com.whatsapp");
+
+            waIntent.putExtra(Intent.EXTRA_TEXT, text);
+//            startActivity(Intent.createChooser(waIntent, "Share with"));
+            startActivity(waIntent);
+
+        } catch (PackageManager.NameNotFoundException e) {
+            Toast.makeText(this, "WhatsApp not Installed", Toast.LENGTH_SHORT)
+                    .show();
+        }
+
     }
 }
