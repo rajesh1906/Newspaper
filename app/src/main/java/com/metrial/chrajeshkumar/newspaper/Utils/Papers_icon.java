@@ -110,4 +110,12 @@ public class Papers_icon
 
     };
 
+    public static Integer[] categories = {
+            R.drawable.worldnews,
+            R.drawable.sports,
+            R.drawable.technology,
+            R.drawable.entertainment
+
+    };
+
 }

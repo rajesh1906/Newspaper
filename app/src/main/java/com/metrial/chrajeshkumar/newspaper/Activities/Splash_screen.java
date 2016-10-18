@@ -1,28 +1,34 @@
 package com.metrial.chrajeshkumar.newspaper.Activities;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.WindowManager;
+import android.widget.Toast;
 
-import com.metrial.chrajeshkumar.newspaper.Authentication.LaunchingScreen;
 import com.metrial.chrajeshkumar.newspaper.DashBoardActivity;
+import com.metrial.chrajeshkumar.newspaper.Fragments.Categories;
+import com.metrial.chrajeshkumar.newspaper.Helper.Activiy_control;
 import com.metrial.chrajeshkumar.newspaper.R;
 import com.metrial.chrajeshkumar.newspaper.Utils.CheckNetwork;
+import com.metrial.chrajeshkumar.newspaper.Utils.ConStants;
+import com.metrial.chrajeshkumar.newspaper.Utils.Control;
+
+import java.util.HashMap;
 
 /**
  * Created by ChRajeshKumar on 9/30/2016.
  */
-public class Splash_screen extends AppCompatActivity
-{
+public class Splash_screen extends AppCompatActivity implements Activiy_control {
     Handler handler;
     AlertDialog alertDialog;
-
+    HashMap<String, String> params = new HashMap<>();
+    Class fromclass;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +39,7 @@ public class Splash_screen extends AppCompatActivity
             final Intent intent = getIntent();
             final String intentAction = intent.getAction();
             if (intent.hasCategory(Intent.CATEGORY_LAUNCHER) && intentAction != null && intentAction.equals(Intent.ACTION_MAIN)) {
-                Log.e( "Main Activity is not the root.  Finishing Main Activity instead of launching.","<><>");
+                Log.e("Main Activity is not the root.  Finishing Main Activity instead of launching.", "<><>");
                 finish();
                 return;
             }
@@ -53,7 +59,9 @@ public class Splash_screen extends AppCompatActivity
                     Log.e("Handler Exception :", ex.toString());
 
                 }
-            };
+            }
+
+            ;
         }.start();
 
         handler = new Handler() {
@@ -64,10 +72,14 @@ public class Splash_screen extends AppCompatActivity
 
                 if (CheckNetwork.isOnline(Splash_screen.this)) {
 
-                    Intent intent = new Intent(Splash_screen.this,
+                   /* Intent intent = new Intent(Splash_screen.this,
                             DashBoardActivity.class);
                     startActivity(intent);
-                    finish();
+                    finish();*/
+
+                    FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+                    transaction.replace(R.id.container, new Categories());
+                    transaction.commit();
                     overridePendingTransition(R.anim.left_slide_in, R.anim.left_slide_out);
                 } else {
                     Log.e("coming to else condition", "<><>");
@@ -76,9 +88,39 @@ public class Splash_screen extends AppCompatActivity
         };
 
 
-
     }
 
 
+    @Override
+    public Class fromActivity() {
+        return fromclass;
+    }
 
+    @Override
+    public HashMap<String, String> params() {
+        return params;
+    }
+
+    @Override
+    public void activityCallback(HashMap<String, String> params1) {
+        Log.e("position is", "<><><" + params1.get("position") + " category name is " + params1.get("category"));
+        params = params1;
+        switch (Integer.parseInt(params1.get("position"))) {
+            case 0:
+                fromclass = DashBoardActivity.class;
+                Control.control_flow(ConStants.ACTIVITY_CONTROL, Splash_screen.this);
+                break;
+            case 1:
+                Toast.makeText(this, "Under construction", Toast.LENGTH_LONG).show();
+                break;
+            case 2:
+                Toast.makeText(this, "Under construction", Toast.LENGTH_LONG).show();
+                break;
+            case 3:
+                Toast.makeText(this, "Under construction", Toast.LENGTH_LONG).show();
+                break;
+        }
+
+
+    }
 }

@@ -92,7 +92,7 @@
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                android:visibility="gone"
+                android:visibility="visible"
                 app:layout_collapseMode="pin"
                 app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
                 app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
@@ -340,9 +340,9 @@
             android:id="@+id/txt_sticky"
 
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:background="@color/colorPrimary"
-            android:gravity="center_horizontal"
+            android:gravity="center_horizontal|center_vertical"
             android:paddingBottom="5dp"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"

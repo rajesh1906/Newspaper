@@ -73,12 +73,12 @@
     </string-array>
 
     <string-array name="english_news_channels">
-        <item>Times Now latest english news</item>
-        <item>BBC latest english news</item>
-        <item>India Today Television latest english news</item>
-        <item>News X latest english news</item>
-        <item>NDTV 24x7 latest english news</item>
-        <item>CCTV News latest english news</item>
+        <item>Times Now latest live news</item>
+        <item>BBC latest live news</item>
+        <item>India Today Television latest live news</item>
+        <item>News X latest live news</item>
+        <item>NDTV 24x7 latest live news</item>
+        <item>CCTV News latest live news</item>
     </string-array>
 
     <string-array name="sharing_items">
@@ -125,6 +125,14 @@
         <item>Malayalam</item>
     </string-array>
 
+    <!--Categeroies-->
+    <string-array name="categories">
+        <item>World News</item>
+        <item>Sports</item>
+        <item>Tech</item>
+        <item>Entertainment</item>
+
+    </string-array>
 
 
 

@@ -28,12 +28,14 @@
             android:layout_width="50dp"
             android:layout_height="50dp">
 
-        <ImageView
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:layout_marginLeft="2dp"
-            android:layout_gravity="center_vertical"
-            android:src="@drawable/back_arrow"/>
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginLeft="2dp"
+
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/back_arrow"
+                android:id="@+id/imageView2" />
 
         </LinearLayout>
         <ImageView
@@ -45,6 +47,7 @@
             android:layout_marginRight="10dp"
             android:id="@+id/search_icon"
             android:layout_alignParentEnd="true"
+            android:visibility="gone"
             android:layout_alignParentRight="true"
             android:src="@drawable/search_icon"
            />

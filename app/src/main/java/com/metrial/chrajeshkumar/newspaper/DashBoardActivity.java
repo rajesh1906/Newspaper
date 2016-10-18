@@ -221,7 +221,7 @@ public class DashBoardActivity extends AppCompatActivity implements NavigationVi
                     Log.e("collapsed is ", "<><>");
                     img_header_paper.setVisibility(View.VISIBLE);
                     txt_title.setVisibility(View.VISIBLE);
-                    txt_sticky.setVisibility(View.VISIBLE);
+                    txt_sticky.setVisibility(View.GONE);
                     txt_title.setText("News Paper");
                 } else if (verticalOffset == 0) {
                     // Expanded
@@ -272,14 +272,14 @@ public class DashBoardActivity extends AppCompatActivity implements NavigationVi
             public void onScrollChange(NestedScrollView v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
                 Log.e("scrollX is shown", "<><" + scrollY);
                 txt_title.setVisibility(View.GONE);
-                txt_sticky.setVisibility(View.VISIBLE);
-                if (scrollY < 1400) {
+                txt_sticky.setVisibility(View.GONE);
+                if (scrollY < 1310) {
                     txt_sticky.setText("English");
-                } else if (scrollY > 1400 && scrollY < 2740) {
+                } else if (scrollY > 1310 && scrollY < 2740) {
                     txt_sticky.setText("Telugu");
                 } else if (scrollY > 2740 && scrollY < 4070) {
                     txt_sticky.setText("Hindi");
-                } else if (scrollY > 4070 && scrollY < 5400) {
+                } else if (scrollY > 4070 && scrollY < 5250) {
                     txt_sticky.setText("Tamil");
                 } else {
                     txt_sticky.setText("Malayalam");
