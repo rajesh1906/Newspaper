@@ -134,6 +134,16 @@
 
     </string-array>
 
+    <!--Techonology-->
+    <string-array name="tech_news">
+        <item>Digit</item>
+        <item>Gadgets 360</item>
+        <item>Info World</item>
+        <item>Mobile Tech Today</item>
+        <item>Tech News World</item>
+        <item>Gadgets Now</item>
+    </string-array>
+
 
 
     <string name="youtube_api_key">AIzaSyANC7YXqT-P7JYbsFShIl_6dhAEdkfYIEo</string>

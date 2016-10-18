@@ -71,12 +71,6 @@ public class Splash_screen extends AppCompatActivity implements Activiy_control 
                 super.handleMessage(msg);
 
                 if (CheckNetwork.isOnline(Splash_screen.this)) {
-
-                   /* Intent intent = new Intent(Splash_screen.this,
-                            DashBoardActivity.class);
-                    startActivity(intent);
-                    finish();*/
-
                     FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
                     transaction.replace(R.id.container, new Categories());
                     transaction.commit();
@@ -114,6 +108,7 @@ public class Splash_screen extends AppCompatActivity implements Activiy_control 
                 Toast.makeText(this, "Under construction", Toast.LENGTH_LONG).show();
                 break;
             case 2:
+
                 Toast.makeText(this, "Under construction", Toast.LENGTH_LONG).show();
                 break;
             case 3:
