@@ -127,4 +127,14 @@ public class Papers_icon
 
     };
 
+    public static Integer[] sports = {
+            R.drawable.yahoosports,
+            R.drawable.espn,
+            R.drawable.bleacherreport,
+            R.drawable.cbssports,
+            R.drawable.si,
+            R.drawable.nbcsports
+
+    };
+
 }

@@ -44,13 +44,21 @@ public class Endpoints {
     public static String mangalam = "http://www.mangalam.com/";
     public static String kerala_kaumudi = "http://www.indiapress.info/keralakaumudi.malayalam.html";
 
-    //Technology urls
+    //Fetch_category urls(Technology)
     public static String bbc_technology = "http://www.bbc.com/news/technology";
     public static String gadget_360 = "http://gadgets.ndtv.com/";
     public static String info_world = "http://www.infoworld.com/category/mobile-technology/";
     public static String mobile_tech_today = "http://www.mobile-tech-today.com/";
     public static String tech_news_world = "http://www.technewsworld.com/";
     public static String techgig = "https://www.techgig.com/tech-news/editors-pick";
+
+    //Fetch category urls (sports)
+    public static String yahoo_sports ="http://sports.yahoo.com/";
+    public static String espn ="http://www.espn.in/?src=com";
+    public static String bleachar_report ="";
+    public static String cbs_sports ="http://bleacherreport.com/";
+    public static String si ="http://www.si.com/";
+    public static String nbc_sports ="http://www.nbcsports.com/";
 
 
     public static String getSearching(String search_string, int limit) {

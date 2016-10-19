@@ -7,18 +7,15 @@ import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.KeyEvent;
 import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.metrial.chrajeshkumar.newspaper.DashBoardActivity;
 import com.metrial.chrajeshkumar.newspaper.Fragments.Categories;
-import com.metrial.chrajeshkumar.newspaper.Fragments.Technology;
+import com.metrial.chrajeshkumar.newspaper.Fragments.Fetch_categories;
 import com.metrial.chrajeshkumar.newspaper.Helper.Activiy_control;
 import com.metrial.chrajeshkumar.newspaper.Helper.HandlingViews;
 import com.metrial.chrajeshkumar.newspaper.R;
@@ -116,12 +113,16 @@ public class Splash_screen extends AppCompatActivity implements Activiy_control,
                 Control.control_flow(ConStants.ACTIVITY_CONTROL, Splash_screen.this);
                 break;
             case 1:
-                Toast.makeText(this, "Under construction", Toast.LENGTH_LONG).show();
+//                Toast.makeText(this, "Under construction", Toast.LENGTH_LONG).show();
+                FragmentTransaction transaction1 = getSupportFragmentManager().beginTransaction();
+                transaction1.setCustomAnimations(R.anim.fade_in, R.anim.fade_out);
+                transaction1.add(R.id.container, new Fetch_categories("sports"), "Fetch_categories");
+                transaction1.commit();
                 break;
             case 2:
                 FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
                 transaction.setCustomAnimations(R.anim.fade_in, R.anim.fade_out);
-                transaction.add(R.id.container, new Technology(), "Technology");
+                transaction.add(R.id.container, new Fetch_categories("technology"), "Fetch_categories");
                 transaction.commit();
 //                Toast.makeText(this, "Under construction", Toast.LENGTH_LONG).show();
                 break;
@@ -160,7 +161,7 @@ public class Splash_screen extends AppCompatActivity implements Activiy_control,
         FragmentManager fragmentManager = getSupportFragmentManager();
         Fragment currentFragment = fragmentManager.findFragmentById(R.id.container);
         Log.e("onback presses is  ", "<><>" + currentFragment.getTag());
-        if (currentFragment.getTag().equals("Technology")) {
+        if (currentFragment.getTag().equals("Fetch_categories")) {
             FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
             transaction.replace(R.id.container, new Categories(), "Categories");
             transaction.commit();

@@ -14,6 +14,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.metrial.chrajeshkumar.newspaper.Activities.Categories_details;
+import com.metrial.chrajeshkumar.newspaper.Fragments.Fetch_categories;
+import com.metrial.chrajeshkumar.newspaper.Helper.Activiy_control;
 import com.metrial.chrajeshkumar.newspaper.R;
 import com.metrial.chrajeshkumar.newspaper.Utils.CheckNetwork;
 import com.metrial.chrajeshkumar.newspaper.Utils.ConStants;
@@ -30,13 +32,17 @@ public class News_deails_adaper extends BaseAdapter {
     private final String[] string;
     private final Integer[] Imageid;
     Animation side_out, slide_in_right;
+    Fetch_categories fetch_categories;
+    Activiy_control activiy_control;
 
     int error;
 
-    public News_deails_adaper(Context c, String[] string, Integer[] Imageid) {
+    public News_deails_adaper(Context c, String[] string, Integer[] Imageid,Fetch_categories fetch_categories) {
         mContext = c;
         this.Imageid = Imageid;
         this.string = string;
+        this.fetch_categories = fetch_categories;
+        this.activiy_control = fetch_categories;
         side_out = AnimationUtils.loadAnimation(mContext,
                 R.anim.anim_slide_out_left);
 
@@ -87,11 +93,13 @@ public class News_deails_adaper extends BaseAdapter {
                         HashMap<String, String> params = new HashMap<String, String>();
                         params.put("position", "" + p);
                         Log.e("position is ","<><>"+p);
-                        Intent intent = new Intent(mContext, Categories_details.class);
+
+                        activiy_control.activityCallback(params);
+                        /*Intent intent = new Intent(mContext, Categories_details.class);
                         intent.putExtra("params", params);
                         mContext.startActivity(intent);
                         Activity activity = (Activity)mContext;
-                        activity.overridePendingTransition(R.anim.left_slide_in, R.anim.left_slide_out);
+                        activity.overridePendingTransition(R.anim.left_slide_in, R.anim.left_slide_out);*/
 
                     } else {
                         error = ConStants.NETWORK_CONNECTION_ERROR;

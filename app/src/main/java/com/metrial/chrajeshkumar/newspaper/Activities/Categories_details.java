@@ -48,6 +48,7 @@ public class Categories_details extends AppCompatActivity implements HandlingVie
     private Animation fab_open, fab_close, rotate_forward, rotate_backward;
     private Boolean isFabOpen = false;
     Class fromclass;
+    String from_category;
 
 
     @Override
@@ -58,8 +59,7 @@ public class Categories_details extends AppCompatActivity implements HandlingVie
         ButterKnife.bind(this);
         Intent intent = getIntent();
         HashMap<String, String> hashMap = (HashMap<String, String>) intent.getSerializableExtra("params");
-
-
+        from_category = hashMap.get("from category");
         position = Integer.parseInt(hashMap.get("position"));
         progress_download_google.setVisibility(View.VISIBLE);
         progress_download_google.setIndeterminateDrawable(new SmoothProgressDrawable.Builder(this).interpolator(new AccelerateInterpolator()).build());
@@ -86,6 +86,7 @@ public class Categories_details extends AppCompatActivity implements HandlingVie
                 endpoint = Endpoints.techgig;
                 break;
         }
+
         fab_open = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fab_open);
         fab_close = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fab_close);
         rotate_forward = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.rotate_forward);
@@ -95,6 +96,17 @@ public class Categories_details extends AppCompatActivity implements HandlingVie
         fab_back.setOnClickListener(this);
 
         new Webview_implementation().startWebView(endpoint, webview, Categories_details.this);
+    }
+
+    public String get_Endpoint(int position,String from_category)
+    {
+        String endpoint="";
+
+
+
+
+
+        return endpoint;
     }
 
     @Override

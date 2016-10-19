@@ -85,12 +85,6 @@ public class Categories_adapter extends BaseAdapter implements HandlingViews {
                         params.put("category", string[0]);
                         params.put("position", "" + p);
                         activiy_control.activityCallback(params);
-//                        Intent intent = new Intent(mContext, Dashboard_Detail.class);
-//                        intent.putExtra("category", string[0]);
-//                        intent.putExtra("position", p);
-//                        mContext.startActivity(intent);
-//                        Activity activity = (Activity) mContext;
-//                        activity.overridePendingTransition(R.anim.left_slide_in, R.anim.left_slide_out);
                     } else {
                         error = ConStants.NETWORK_CONNECTION_ERROR;
                         Control.control_flow(ConStants.DIALOG_CONTROL,mContext);
