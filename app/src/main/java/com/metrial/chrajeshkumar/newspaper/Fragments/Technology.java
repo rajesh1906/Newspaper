@@ -30,7 +30,7 @@ public class Technology extends Fragment {
         view = inflater.inflate(R.layout.categories, container, false);
         InitilizeViews(view);
         grid_categories.setNumColumns(2);
-        grid_categories.setAdapter(new News_deails_adaper(getActivity(), this.getResources().getStringArray(R.array.tech_news), Papers_icon.categories));
+        grid_categories.setAdapter(new News_deails_adaper(getActivity(), this.getResources().getStringArray(R.array.tech_news), Papers_icon.technologies));
         grid_categories.setExpanded(true);
 
         return view;

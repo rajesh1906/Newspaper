@@ -117,5 +117,14 @@ public class Papers_icon
             R.drawable.entertainment
 
     };
+    public static Integer[] technologies = {
+            R.drawable.bbc_technology,
+            R.drawable.gadgets_three,
+            R.drawable.info_world,
+            R.drawable.mobile_tech_today,
+            R.drawable.tech_news_world,
+            R.drawable.tech_gig
+
+    };
 
 }

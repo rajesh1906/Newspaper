@@ -119,4 +119,9 @@ public class Channel_adapter extends BaseAdapter implements HandlingViews {
     public int getContantField() {
         return error;
     }
+
+    @Override
+    public void dialog_control() {
+
+    }
 }

@@ -36,6 +36,9 @@
         <activity
             android:name=".Sharing.WebViewActivity"
             android:label="@string/app_name" />
+
+        <activity android:name=".Activities.Categories_details"
+            android:screenOrientation="portrait"/>
         <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/facebook_app_id"/>
         <provider android:authorities="com.facebook.app.FacebookContentProvider649205268572768"
             android:name="com.facebook.FacebookContentProvider"

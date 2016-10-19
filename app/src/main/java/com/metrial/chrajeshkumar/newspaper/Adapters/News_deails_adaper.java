@@ -1,6 +1,9 @@
 package com.metrial.chrajeshkumar.newspaper.Adapters;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +13,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.metrial.chrajeshkumar.newspaper.Activities.Categories_details;
 import com.metrial.chrajeshkumar.newspaper.R;
 import com.metrial.chrajeshkumar.newspaper.Utils.CheckNetwork;
 import com.metrial.chrajeshkumar.newspaper.Utils.ConStants;
@@ -66,7 +70,7 @@ public class News_deails_adaper extends BaseAdapter {
         if (convertView == null) {
 
             grid = new View(mContext);
-            grid = inflater.inflate(R.layout.dash_board_item, null);
+            grid = inflater.inflate(R.layout.category_item, null);
             TextView textView = (TextView) grid.findViewById(R.id.gridview_text);
             ImageView imageView = (ImageView) grid.findViewById(R.id.gridview_image);
 //            textView.setText(string[p]);
@@ -81,8 +85,13 @@ public class News_deails_adaper extends BaseAdapter {
                     if (CheckNetwork.isOnline(mContext)) {
 
                         HashMap<String, String> params = new HashMap<String, String>();
-                        params.put("category", string[0]);
                         params.put("position", "" + p);
+                        Log.e("position is ","<><>"+p);
+                        Intent intent = new Intent(mContext, Categories_details.class);
+                        intent.putExtra("params", params);
+                        mContext.startActivity(intent);
+                        Activity activity = (Activity)mContext;
+                        activity.overridePendingTransition(R.anim.left_slide_in, R.anim.left_slide_out);
 
                     } else {
                         error = ConStants.NETWORK_CONNECTION_ERROR;

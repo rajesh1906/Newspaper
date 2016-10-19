@@ -120,4 +120,9 @@ public class Dashboard extends BaseAdapter implements HandlingViews {
     public int getContantField() {
         return error;
     }
+
+    @Override
+    public void dialog_control() {
+
+    }
 }

@@ -44,6 +44,14 @@ public class Endpoints {
     public static String mangalam = "http://www.mangalam.com/";
     public static String kerala_kaumudi = "http://www.indiapress.info/keralakaumudi.malayalam.html";
 
+    //Technology urls
+    public static String bbc_technology = "http://www.bbc.com/news/technology";
+    public static String gadget_360 = "http://gadgets.ndtv.com/";
+    public static String info_world = "http://www.infoworld.com/category/mobile-technology/";
+    public static String mobile_tech_today = "http://www.mobile-tech-today.com/";
+    public static String tech_news_world = "http://www.technewsworld.com/";
+    public static String techgig = "https://www.techgig.com/tech-news/editors-pick";
+
 
     public static String getSearching(String search_string, int limit) {
 

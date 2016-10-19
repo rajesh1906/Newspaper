@@ -7,4 +7,5 @@ public interface HandlingViews {
     public void implementation(String message,int position);
     public void conncetion(String value,String title,String description);
     public int getContantField();
+    public void dialog_control();
 }

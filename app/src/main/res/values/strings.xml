@@ -136,12 +136,12 @@
 
     <!--Techonology-->
     <string-array name="tech_news">
-        <item>Digit</item>
+        <item>BBC Technology</item>
         <item>Gadgets 360</item>
         <item>Info World</item>
         <item>Mobile Tech Today</item>
         <item>Tech News World</item>
-        <item>Gadgets Now</item>
+        <item>Techgig</item>
     </string-array>
 
 

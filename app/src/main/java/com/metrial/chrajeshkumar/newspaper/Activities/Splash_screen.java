@@ -4,16 +4,23 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.metrial.chrajeshkumar.newspaper.DashBoardActivity;
 import com.metrial.chrajeshkumar.newspaper.Fragments.Categories;
+import com.metrial.chrajeshkumar.newspaper.Fragments.Technology;
 import com.metrial.chrajeshkumar.newspaper.Helper.Activiy_control;
+import com.metrial.chrajeshkumar.newspaper.Helper.HandlingViews;
 import com.metrial.chrajeshkumar.newspaper.R;
 import com.metrial.chrajeshkumar.newspaper.Utils.CheckNetwork;
 import com.metrial.chrajeshkumar.newspaper.Utils.ConStants;
@@ -24,11 +31,12 @@ import java.util.HashMap;
 /**
  * Created by ChRajeshKumar on 9/30/2016.
  */
-public class Splash_screen extends AppCompatActivity implements Activiy_control {
+public class Splash_screen extends AppCompatActivity implements Activiy_control, HandlingViews {
     Handler handler;
     AlertDialog alertDialog;
     HashMap<String, String> params = new HashMap<>();
     Class fromclass;
+    int error;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,11 +80,12 @@ public class Splash_screen extends AppCompatActivity implements Activiy_control 
 
                 if (CheckNetwork.isOnline(Splash_screen.this)) {
                     FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-                    transaction.replace(R.id.container, new Categories());
+                    transaction.replace(R.id.container, new Categories(), "Categories");
                     transaction.commit();
                     overridePendingTransition(R.anim.left_slide_in, R.anim.left_slide_out);
                 } else {
-                    Log.e("coming to else condition", "<><>");
+                    error = ConStants.NETWORK_CONNECTION_ERROR;
+                    Control.control_flow(ConStants.DIALOG_CONTROL, Splash_screen.this);
                 }
             }
         };
@@ -108,8 +117,10 @@ public class Splash_screen extends AppCompatActivity implements Activiy_control 
                 Toast.makeText(this, "Under construction", Toast.LENGTH_LONG).show();
                 break;
             case 2:
-
-                Toast.makeText(this, "Under construction", Toast.LENGTH_LONG).show();
+                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.container, new Technology(), "Technology");
+                transaction.commit();
+//                Toast.makeText(this, "Under construction", Toast.LENGTH_LONG).show();
                 break;
             case 3:
                 Toast.makeText(this, "Under construction", Toast.LENGTH_LONG).show();
@@ -117,5 +128,41 @@ public class Splash_screen extends AppCompatActivity implements Activiy_control 
         }
 
 
+    }
+
+    @Override
+    public void implementation(String message, int position) {
+
+    }
+
+    @Override
+    public void conncetion(String value, String title, String description) {
+
+    }
+
+    @Override
+    public int getContantField() {
+        return error;
+    }
+
+    @Override
+    public void dialog_control() {
+
+    }
+
+    @Override
+    public void onBackPressed() {
+//        super.onBackPressed();
+
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        Fragment currentFragment = fragmentManager.findFragmentById(R.id.container);
+        Log.e("onback presses is  ", "<><>" + currentFragment.getTag());
+        if (currentFragment.getTag().equals("Technology")) {
+            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+            transaction.replace(R.id.container, new Categories(), "Categories");
+            transaction.commit();
+        } else if (currentFragment.getTag().equals("Categories")) {
+            finish();
+        }
     }
 }

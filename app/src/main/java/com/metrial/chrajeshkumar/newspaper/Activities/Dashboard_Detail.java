@@ -81,7 +81,6 @@ public class Dashboard_Detail extends AppCompatActivity implements NavigationVie
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
         toggle.syncState();
-
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         progress_download_google.setVisibility(View.VISIBLE);
@@ -89,8 +88,8 @@ public class Dashboard_Detail extends AppCompatActivity implements NavigationVie
         grid = (RecyclerView) navigationView.getHeaderView(0).findViewById(R.id.grid);
         grid_telugu = (RecyclerView) navigationView.getHeaderView(0).findViewById(R.id.grid_telugu);
         grid_hindi = (RecyclerView) navigationView.getHeaderView(0).findViewById(R.id.grid_hindi);
-        grid_tamil = (RecyclerView)navigationView.getHeaderView(0).findViewById(R.id.grid_tamil);
-        grid_malayalam = (RecyclerView)navigationView.getHeaderView(0).findViewById(R.id.grid_malayalam);
+        grid_tamil = (RecyclerView) navigationView.getHeaderView(0).findViewById(R.id.grid_tamil);
+        grid_malayalam = (RecyclerView) navigationView.getHeaderView(0).findViewById(R.id.grid_malayalam);
         progress_download_google.setIndeterminateDrawable(new SmoothProgressDrawable.Builder(this).interpolator(new AccelerateInterpolator()).build());
         progress_download_google.getIndeterminateDrawable().setColorFilter(
                 getResources().getColor(R.color.colorPrimary), android.graphics.PorterDuff.Mode.SRC_IN);
@@ -487,12 +486,17 @@ public class Dashboard_Detail extends AppCompatActivity implements NavigationVie
     }
 
     @Override
-    public void conncetion(String value, String titiel,String description) {
+    public void conncetion(String value, String titiel, String description) {
 
     }
 
     @Override
     public int getContantField() {
         return 0;
+    }
+
+    @Override
+    public void dialog_control() {
+
     }
 }

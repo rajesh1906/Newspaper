@@ -237,6 +237,11 @@ public class LaunchingScreen extends AppCompatActivity implements Edittext_focus
         return error;
     }
 
+    @Override
+    public void dialog_control() {
+
+    }
+
 
     public class CustomWatcher implements TextWatcher {
 

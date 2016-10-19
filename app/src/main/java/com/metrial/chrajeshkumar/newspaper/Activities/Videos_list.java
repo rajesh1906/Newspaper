@@ -279,6 +279,11 @@ public class Videos_list extends YouTubeBaseActivity implements APIService, Hand
     }
 
     @Override
+    public void dialog_control() {
+
+    }
+
+    @Override
     public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer youTubePlayer, boolean b) {
         if (!b) {
             youTubePlayer_outer = youTubePlayer;

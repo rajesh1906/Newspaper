@@ -406,6 +406,11 @@ public class DashBoardActivity extends AppCompatActivity implements NavigationVi
         return error;
     }
 
+    @Override
+    public void dialog_control() {
+
+    }
+
 
     @Override
     public Class fromActivity() {
