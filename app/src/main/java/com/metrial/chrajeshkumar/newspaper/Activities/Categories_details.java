@@ -2,16 +2,23 @@ package com.metrial.chrajeshkumar.newspaper.Activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.animation.AccelerateInterpolator;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.webkit.WebView;
 import android.widget.ProgressBar;
 
+import com.metrial.chrajeshkumar.newspaper.Helper.Activiy_control;
 import com.metrial.chrajeshkumar.newspaper.Helper.HandlingViews;
 import com.metrial.chrajeshkumar.newspaper.Helper.Webview_implementation;
 import com.metrial.chrajeshkumar.newspaper.R;
+import com.metrial.chrajeshkumar.newspaper.Utils.ConStants;
+import com.metrial.chrajeshkumar.newspaper.Utils.Control;
 import com.metrial.chrajeshkumar.newspaper.Utils.Endpoints;
 import com.metrial.chrajeshkumar.newspaper.smoothprogress.SmoothProgressDrawable;
 
@@ -24,7 +31,7 @@ import butterknife.ButterKnife;
  * Created by ChRajeshKumar on 10/18/2016.
  */
 
-public class Categories_details extends AppCompatActivity implements HandlingViews {
+public class Categories_details extends AppCompatActivity implements HandlingViews, View.OnClickListener, Activiy_control {
 
     @Bind(R.id.webview)
     WebView webview;
@@ -32,6 +39,16 @@ public class Categories_details extends AppCompatActivity implements HandlingVie
     String endpoint;
     @Bind(R.id.progress_download_google)
     ProgressBar progress_download_google;
+    @Bind(R.id.fab)
+    FloatingActionButton fab;
+    @Bind(R.id.fab_home)
+    FloatingActionButton fab_home;
+    @Bind(R.id.fab_back)
+    FloatingActionButton fab_back;
+    private Animation fab_open, fab_close, rotate_forward, rotate_backward;
+    private Boolean isFabOpen = false;
+    Class fromclass;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +66,7 @@ public class Categories_details extends AppCompatActivity implements HandlingVie
         progress_download_google.getIndeterminateDrawable().setColorFilter(
                 getResources().getColor(R.color.colorPrimary), android.graphics.PorterDuff.Mode.SRC_IN);
 
-        switch (position){
+        switch (position) {
             case 0:
                 endpoint = Endpoints.bbc_technology;
                 break;
@@ -69,8 +86,15 @@ public class Categories_details extends AppCompatActivity implements HandlingVie
                 endpoint = Endpoints.techgig;
                 break;
         }
+        fab_open = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fab_open);
+        fab_close = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fab_close);
+        rotate_forward = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.rotate_forward);
+        rotate_backward = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.rotate_backward);
+        fab.setOnClickListener(this);
+        fab_home.setOnClickListener(this);
+        fab_back.setOnClickListener(this);
 
-        new Webview_implementation().startWebView(endpoint,webview,Categories_details.this);
+        new Webview_implementation().startWebView(endpoint, webview, Categories_details.this);
     }
 
     @Override
@@ -91,5 +115,69 @@ public class Categories_details extends AppCompatActivity implements HandlingVie
     @Override
     public void dialog_control() {
 //    Categories_details.progress_download_google.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void onClick(View v) {
+        int id = v.getId();
+        switch (id) {
+            case R.id.fab:
+
+                animateFAB();
+                break;
+            case R.id.fab_home:
+
+                fromclass = Splash_screen.class;
+                Control.control_flow(ConStants.ACTIVITY_CONTROL, Categories_details.this);
+                finish();
+                Log.d("Raj", "Fab 1");
+                break;
+            case R.id.fab_back:
+
+                Log.d("Raj", "Fab 2");
+                finish();
+                break;
+        }
+    }
+
+    public void animateFAB() {
+
+        if (isFabOpen) {
+
+            fab.startAnimation(rotate_backward);
+            fab_home.startAnimation(fab_close);
+            fab_back.startAnimation(fab_close);
+            fab_home.setClickable(false);
+            fab_back.setClickable(false);
+            isFabOpen = false;
+            Log.d("Raj", "close");
+
+        } else {
+
+            fab.startAnimation(rotate_forward);
+            fab_home.startAnimation(fab_open);
+            fab_back.startAnimation(fab_open);
+            fab_home.setClickable(true);
+            fab_back.setClickable(true);
+            isFabOpen = true;
+            Log.d("Raj", "open");
+
+        }
+    }
+
+    @Override
+    public Class fromActivity() {
+        return fromclass;
+    }
+
+    @Override
+    public HashMap<String, String> params() {
+        return null;
+    }
+
+    @Override
+    public void activityCallback(HashMap<String, String> params) {
+
+
     }
 }

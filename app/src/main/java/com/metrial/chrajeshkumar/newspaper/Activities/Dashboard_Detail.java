@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -19,6 +20,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.animation.AccelerateInterpolator;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -26,8 +29,11 @@ import android.widget.ProgressBar;
 
 import com.metrial.chrajeshkumar.newspaper.Adapters.Navigation_items;
 import com.metrial.chrajeshkumar.newspaper.DashBoardActivity;
+import com.metrial.chrajeshkumar.newspaper.Helper.Activiy_control;
 import com.metrial.chrajeshkumar.newspaper.Helper.HandlingViews;
 import com.metrial.chrajeshkumar.newspaper.R;
+import com.metrial.chrajeshkumar.newspaper.Utils.ConStants;
+import com.metrial.chrajeshkumar.newspaper.Utils.Control;
 import com.metrial.chrajeshkumar.newspaper.Utils.Endpoints;
 import com.metrial.chrajeshkumar.newspaper.Utils.Papers_icon;
 import com.metrial.chrajeshkumar.newspaper.smoothprogress.SmoothProgressDrawable;
@@ -41,7 +47,7 @@ import butterknife.OnClick;
 /**
  * Created by ChRajeshKumar on 8/31/2016.
  */
-public class Dashboard_Detail extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, HandlingViews {
+public class Dashboard_Detail extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, HandlingViews, View.OnClickListener,Activiy_control {
     @Bind(R.id.webview)
     WebView webview;
     int position;
@@ -59,6 +65,16 @@ public class Dashboard_Detail extends AppCompatActivity implements NavigationVie
     RecyclerView grid_hindi;
     RecyclerView grid_tamil;
     RecyclerView grid_malayalam;
+
+    @Bind(R.id.fab)
+    FloatingActionButton fab;
+    @Bind(R.id.fab_home)
+    FloatingActionButton fab_home;
+    @Bind(R.id.fab_back)
+    FloatingActionButton fab_back;
+    private Animation fab_open, fab_close, rotate_forward, rotate_backward;
+    private Boolean isFabOpen = false;
+    Class fromclass;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -116,6 +132,14 @@ public class Dashboard_Detail extends AppCompatActivity implements NavigationVie
         grid_malayalam.setAdapter(new Navigation_items(this, this.getResources().getStringArray(R.array.malayalam_paper), Papers_icon.malayalam_papers));
 
 
+
+        fab_open = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fab_open);
+        fab_close = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fab_close);
+        rotate_forward = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.rotate_forward);
+        rotate_backward = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.rotate_backward);
+        fab.setOnClickListener(this);
+        fab_home.setOnClickListener(this);
+        fab_back.setOnClickListener(this);
     }
 
 
@@ -497,6 +521,68 @@ public class Dashboard_Detail extends AppCompatActivity implements NavigationVie
 
     @Override
     public void dialog_control() {
+
+    }
+
+    @Override
+    public void onClick(View v) {
+        int id = v.getId();
+        switch (id) {
+            case R.id.fab:
+
+                animateFAB();
+                break;
+            case R.id.fab_home:
+
+                fromclass = Splash_screen.class;
+                Control.control_flow(ConStants.ACTIVITY_CONTROL, Dashboard_Detail.this);
+                finish();
+                Log.d("Raj", "Fab 1");
+                break;
+            case R.id.fab_back:
+
+                Log.d("Raj", "Fab 2");
+                finish();
+                break;
+        }
+    }
+    public void animateFAB() {
+
+        if (isFabOpen) {
+
+            fab.startAnimation(rotate_backward);
+            fab_home.startAnimation(fab_close);
+            fab_back.startAnimation(fab_close);
+            fab_home.setClickable(false);
+            fab_back.setClickable(false);
+            isFabOpen = false;
+            Log.d("Raj", "close");
+
+        } else {
+
+            fab.startAnimation(rotate_forward);
+            fab_home.startAnimation(fab_open);
+            fab_back.startAnimation(fab_open);
+            fab_home.setClickable(true);
+            fab_back.setClickable(true);
+            isFabOpen = true;
+            Log.d("Raj", "open");
+
+        }
+    }
+
+    @Override
+    public Class fromActivity() {
+        return fromclass;
+    }
+
+    @Override
+    public HashMap<String, String> params() {
+        return null;
+    }
+
+    @Override
+    public void activityCallback(HashMap<String, String> params) {
 
     }
 }

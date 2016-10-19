@@ -80,6 +80,8 @@ public class Splash_screen extends AppCompatActivity implements Activiy_control,
 
                 if (CheckNetwork.isOnline(Splash_screen.this)) {
                     FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+//                    transaction.setCustomAnimations(R.anim.anim_slide_in_left, R.anim.anim_slide_in_right);
+                    transaction.setCustomAnimations(R.anim.fade_in, R.anim.fade_out);
                     transaction.replace(R.id.container, new Categories(), "Categories");
                     transaction.commit();
                     overridePendingTransition(R.anim.left_slide_in, R.anim.left_slide_out);
@@ -118,7 +120,8 @@ public class Splash_screen extends AppCompatActivity implements Activiy_control,
                 break;
             case 2:
                 FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.container, new Technology(), "Technology");
+                transaction.setCustomAnimations(R.anim.fade_in, R.anim.fade_out);
+                transaction.add(R.id.container, new Technology(), "Technology");
                 transaction.commit();
 //                Toast.makeText(this, "Under construction", Toast.LENGTH_LONG).show();
                 break;
@@ -162,6 +165,10 @@ public class Splash_screen extends AppCompatActivity implements Activiy_control,
             transaction.replace(R.id.container, new Categories(), "Categories");
             transaction.commit();
         } else if (currentFragment.getTag().equals("Categories")) {
+            Intent intent = new Intent(Intent.ACTION_MAIN);
+            intent.addCategory(Intent.CATEGORY_HOME);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
             finish();
         }
     }

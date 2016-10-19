@@ -382,12 +382,6 @@ public class DashBoardActivity extends AppCompatActivity implements NavigationVi
 
 
             }
-
-//            fromclass = Videos_list.class;
-//            params.put("channel", this.getResources().getStringArray(R.array.news_channels)[position]);
-//            Control.control_flow(ConStants.ACTIVITY_CONTROL, DashBoardActivity.this);
-//            overridePendingTransition(R.anim.left_slide_in, R.anim.left_slide_out);
-
             from_whare = "channel";
             Show_channel_dialog(dialog_channels, dialog_channels_icons);
         } else {

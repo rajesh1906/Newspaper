@@ -8,7 +8,7 @@
         android:layout_width="match_parent"
         android:id="@+id/appbar_layout"
         android:layout_height="wrap_content"
-        android:visibility="visible"
+        android:visibility="gone"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
         <android.support.design.widget.CollapsingToolbarLayout
@@ -71,6 +71,58 @@
 
         android:layout_height="match_parent"></WebView>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="visible"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true">
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fab_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+           android:layout_gravity="right"
+
+
+            android:layout_marginRight="@dimen/fab_margin"
+            android:visibility="invisible"
+            app:backgroundTint="@color/colorPrimary"
+            app:elevation="6dp"
+            app:pressedTranslationZ="12dp"
+            android:src="@drawable/back_arrow" />
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fab_home"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="11dp"
+            android:layout_gravity="bottom|end"
+            android:visibility="invisible"
+            android:layout_alignParentBottom="true"
+            app:elevation="6dp"
+            android:layout_marginRight="@dimen/fab_margin"
+            android:layout_alignParentRight="true"
+            app:backgroundTint="@color/colorPrimary"
+            app:pressedTranslationZ="12dp"
+            android:src="@drawable/home"
+            android:layout_toLeftOf="@+id/fab"
+            />
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            app:elevation="6dp"
+            app:backgroundTint="@color/colorPrimary"
+            app:pressedTranslationZ="12dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/fab_margin"
+            android:layout_marginBottom="@dimen/fab_margin"
+            android:src="@drawable/plus_icon" />
+
+        </LinearLayout>
 
     </RelativeLayout>
 </LinearLayout>
