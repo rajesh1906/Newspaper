@@ -34,15 +34,17 @@ public class News_deails_adaper extends BaseAdapter {
     Animation side_out, slide_in_right;
     Fetch_categories fetch_categories;
     Activiy_control activiy_control;
+    String for_fetch;
 
     int error;
 
-    public News_deails_adaper(Context c, String[] string, Integer[] Imageid,Fetch_categories fetch_categories) {
+    public News_deails_adaper(Context c, String[] string, Integer[] Imageid,Fetch_categories fetch_categories,String for_fetch) {
         mContext = c;
         this.Imageid = Imageid;
         this.string = string;
         this.fetch_categories = fetch_categories;
         this.activiy_control = fetch_categories;
+        this.for_fetch = for_fetch;
         side_out = AnimationUtils.loadAnimation(mContext,
                 R.anim.anim_slide_out_left);
 
@@ -92,6 +94,7 @@ public class News_deails_adaper extends BaseAdapter {
 
                         HashMap<String, String> params = new HashMap<String, String>();
                         params.put("position", "" + p);
+                        params.put("from category",for_fetch);
                         Log.e("position is ","<><>"+p);
 
                         activiy_control.activityCallback(params);

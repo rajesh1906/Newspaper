@@ -160,17 +160,28 @@ public class Splash_screen extends AppCompatActivity implements Activiy_control,
 
         FragmentManager fragmentManager = getSupportFragmentManager();
         Fragment currentFragment = fragmentManager.findFragmentById(R.id.container);
-        Log.e("onback presses is  ", "<><>" + currentFragment.getTag());
-        if (currentFragment.getTag().equals("Fetch_categories")) {
-            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-            transaction.replace(R.id.container, new Categories(), "Categories");
-            transaction.commit();
-        } else if (currentFragment.getTag().equals("Categories")) {
+//        Log.e("onback presses is  ", "<><>" + currentFragment.getTag());
+
+        if(null!=currentFragment.getTag())
+        {
+            if (currentFragment.getTag().equals("Fetch_categories")) {
+                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.container, new Categories(), "Categories");
+                transaction.commit();
+            } else if (currentFragment.getTag().equals("Categories")) {
+                Intent intent = new Intent(Intent.ACTION_MAIN);
+                intent.addCategory(Intent.CATEGORY_HOME);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+                finish();
+            }
+        }else{
             Intent intent = new Intent(Intent.ACTION_MAIN);
             intent.addCategory(Intent.CATEGORY_HOME);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
             finish();
         }
+
     }
 }

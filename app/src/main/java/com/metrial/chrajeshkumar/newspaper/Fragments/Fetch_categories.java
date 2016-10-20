@@ -10,10 +10,13 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.metrial.chrajeshkumar.newspaper.Activities.Categories_details;
+import com.metrial.chrajeshkumar.newspaper.Activities.Splash_screen;
 import com.metrial.chrajeshkumar.newspaper.Adapters.News_deails_adaper;
 import com.metrial.chrajeshkumar.newspaper.Helper.Activiy_control;
 import com.metrial.chrajeshkumar.newspaper.Helper.CustomeGridview;
 import com.metrial.chrajeshkumar.newspaper.R;
+import com.metrial.chrajeshkumar.newspaper.Utils.ConStants;
+import com.metrial.chrajeshkumar.newspaper.Utils.Control;
 import com.metrial.chrajeshkumar.newspaper.Utils.Papers_icon;
 
 import java.util.HashMap;
@@ -28,7 +31,9 @@ public class Fetch_categories extends Fragment implements Activiy_control{
     @Bind(R.id.grid_categories)
     CustomeGridview grid_categories;
     View view;
-    String for_fetch;
+    Class fromActivity;
+   public static String for_fetch;
+    HashMap<String, String> params = new HashMap<>();
 
     public Fetch_categories(String for_fetch)
     {
@@ -45,10 +50,10 @@ public class Fetch_categories extends Fragment implements Activiy_control{
         switch (for_fetch)
         {
             case "sports":
-                grid_categories.setAdapter(new News_deails_adaper(getActivity(), this.getResources().getStringArray(R.array.sports_news), Papers_icon.sports,Fetch_categories.this));
+                grid_categories.setAdapter(new News_deails_adaper(getActivity(), this.getResources().getStringArray(R.array.sports_news), Papers_icon.sports,Fetch_categories.this,for_fetch));
                 break;
             case "technology":
-                grid_categories.setAdapter(new News_deails_adaper(getActivity(), this.getResources().getStringArray(R.array.tech_news), Papers_icon.technologies,Fetch_categories.this));
+                grid_categories.setAdapter(new News_deails_adaper(getActivity(), this.getResources().getStringArray(R.array.tech_news), Papers_icon.technologies,Fetch_categories.this,for_fetch));
                 break;
         }
 
@@ -63,20 +68,22 @@ public class Fetch_categories extends Fragment implements Activiy_control{
 
     @Override
     public Class fromActivity() {
-        return null;
+        return fromActivity;
     }
 
     @Override
     public HashMap<String, String> params() {
-        return null;
+        return params;
     }
 
     @Override
-    public void activityCallback(HashMap<String, String> params) {
-        Log.e("activiy callback is ","<><>");
+    public void activityCallback(HashMap<String, String> params1) {
+        Log.e("activiy callback is ","<><>"+Fetch_categories.for_fetch);
+//        fromActivity = Categories_details.class;
+//        params = params1;
+//        Control.control_flow(ConStants.ACTIVITY_CONTROL, getActivity());
         Intent intent = new Intent(getActivity(), Categories_details.class);
-        intent.putExtra("params", params);
-        intent.putExtra("from category",for_fetch);
+        intent.putExtra("params", params1);
         getActivity().startActivity(intent);
         getActivity().overridePendingTransition(R.anim.left_slide_in, R.anim.left_slide_out);
     }

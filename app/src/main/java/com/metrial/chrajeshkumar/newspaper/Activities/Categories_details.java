@@ -61,32 +61,11 @@ public class Categories_details extends AppCompatActivity implements HandlingVie
         HashMap<String, String> hashMap = (HashMap<String, String>) intent.getSerializableExtra("params");
         from_category = hashMap.get("from category");
         position = Integer.parseInt(hashMap.get("position"));
+        Log.e("from_category is ","<><>"+from_category);
         progress_download_google.setVisibility(View.VISIBLE);
         progress_download_google.setIndeterminateDrawable(new SmoothProgressDrawable.Builder(this).interpolator(new AccelerateInterpolator()).build());
         progress_download_google.getIndeterminateDrawable().setColorFilter(
                 getResources().getColor(R.color.colorPrimary), android.graphics.PorterDuff.Mode.SRC_IN);
-
-        switch (position) {
-            case 0:
-                endpoint = Endpoints.bbc_technology;
-                break;
-            case 1:
-                endpoint = Endpoints.gadget_360;
-                break;
-            case 2:
-                endpoint = Endpoints.info_world;
-                break;
-            case 3:
-                endpoint = Endpoints.mobile_tech_today;
-                break;
-            case 4:
-                endpoint = Endpoints.tech_news_world;
-                break;
-            case 5:
-                endpoint = Endpoints.techgig;
-                break;
-        }
-
         fab_open = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fab_open);
         fab_close = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fab_close);
         rotate_forward = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.rotate_forward);
@@ -95,13 +74,56 @@ public class Categories_details extends AppCompatActivity implements HandlingVie
         fab_home.setOnClickListener(this);
         fab_back.setOnClickListener(this);
 
-        new Webview_implementation().startWebView(endpoint, webview, Categories_details.this);
+        new Webview_implementation().startWebView(get_Endpoint(position,from_category), webview, Categories_details.this);
     }
 
     public String get_Endpoint(int position,String from_category)
     {
         String endpoint="";
-
+            if(from_category.equals("sports"))
+            {
+                switch (position) {
+                    case 0:
+                        endpoint = Endpoints.yahoo_sports;
+                        break;
+                    case 1:
+                        endpoint = Endpoints.espn;
+                        break;
+                    case 2:
+                        endpoint = Endpoints.bleachar_report;
+                        break;
+                    case 3:
+                        endpoint = Endpoints.cbs_sports;
+                        break;
+                    case 4:
+                        endpoint = Endpoints.si;
+                        break;
+                    case 5:
+                        endpoint = Endpoints.nbc_sports;
+                        break;
+                }
+            }else{
+                switch (position) {
+                    case 0:
+                        endpoint = Endpoints.bbc_technology;
+                        break;
+                    case 1:
+                        endpoint = Endpoints.gadget_360;
+                        break;
+                    case 2:
+                        endpoint = Endpoints.info_world;
+                        break;
+                    case 3:
+                        endpoint = Endpoints.mobile_tech_today;
+                        break;
+                    case 4:
+                        endpoint = Endpoints.tech_news_world;
+                        break;
+                    case 5:
+                        endpoint = Endpoints.techgig;
+                        break;
+                }
+            }
 
 
 
