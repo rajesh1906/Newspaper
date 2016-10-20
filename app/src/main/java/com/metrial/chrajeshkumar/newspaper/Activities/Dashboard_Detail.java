@@ -1,8 +1,6 @@
 package com.metrial.chrajeshkumar.newspaper.Activities;
 
-import android.app.ProgressDialog;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
@@ -22,15 +20,14 @@ import android.view.WindowManager;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.webkit.WebSettings;
 import android.webkit.WebView;
-import android.webkit.WebViewClient;
 import android.widget.ProgressBar;
 
 import com.metrial.chrajeshkumar.newspaper.Adapters.Navigation_items;
 import com.metrial.chrajeshkumar.newspaper.DashBoardActivity;
 import com.metrial.chrajeshkumar.newspaper.Helper.Activiy_control;
 import com.metrial.chrajeshkumar.newspaper.Helper.HandlingViews;
+import com.metrial.chrajeshkumar.newspaper.Helper.Webview_implementation;
 import com.metrial.chrajeshkumar.newspaper.R;
 import com.metrial.chrajeshkumar.newspaper.Utils.ConStants;
 import com.metrial.chrajeshkumar.newspaper.Utils.Control;
@@ -47,34 +44,32 @@ import butterknife.OnClick;
 /**
  * Created by ChRajeshKumar on 8/31/2016.
  */
-public class Dashboard_Detail extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, HandlingViews, View.OnClickListener,Activiy_control {
-    @Bind(R.id.webview)
-    WebView webview;
+public class Dashboard_Detail extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, HandlingViews, View.OnClickListener, Activiy_control {
+
     int position;
     String endpoint;
-    @Bind(R.id.progress_download_google)
-    ProgressBar progress_download_google;
-
-    @Bind(R.id.toolbar)
-    Toolbar toolbar;
-    //    @Bind(R.id.grid)
     RecyclerView grid;
-    //    @Bind(R.id.grid_telugu)
     RecyclerView grid_telugu;
-    //    @Bind(R.id.grid_hindi)
     RecyclerView grid_hindi;
     RecyclerView grid_tamil;
     RecyclerView grid_malayalam;
+    private Animation fab_open, fab_close, rotate_forward, rotate_backward;
+    private Boolean isFabOpen = false;
+    Class fromclass;
 
+    @Bind(R.id.webview)
+    WebView webview;
+    @Bind(R.id.progress_download_google)
+    ProgressBar progress_download_google;
+    @Bind(R.id.toolbar)
+    Toolbar toolbar;
     @Bind(R.id.fab)
     FloatingActionButton fab;
     @Bind(R.id.fab_home)
     FloatingActionButton fab_home;
     @Bind(R.id.fab_back)
     FloatingActionButton fab_back;
-    private Animation fab_open, fab_close, rotate_forward, rotate_backward;
-    private Boolean isFabOpen = false;
-    Class fromclass;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -130,7 +125,6 @@ public class Dashboard_Detail extends AppCompatActivity implements NavigationVie
         RecyclerView.LayoutManager mLayoutManager4 = new LinearLayoutManager(getApplicationContext());
         grid_malayalam.setLayoutManager(mLayoutManager4);
         grid_malayalam.setAdapter(new Navigation_items(this, this.getResources().getStringArray(R.array.malayalam_paper), Papers_icon.malayalam_papers));
-
 
 
         fab_open = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fab_open);
@@ -299,87 +293,7 @@ public class Dashboard_Detail extends AppCompatActivity implements NavigationVie
     }
 
     private void startWebView(String url) {
-
-        //Create new webview Client to show progress dialog
-        //When opening a url or click on link
-
-        webview.getSettings().setJavaScriptEnabled(true);
-        webview.getSettings().setRenderPriority(WebSettings.RenderPriority.HIGH);
-        webview.getSettings().setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
-        webview.getSettings().setAppCacheEnabled(true);
-        webview.getSettings().setDomStorageEnabled(true);
-        webview.getSettings().setLayoutAlgorithm(WebSettings.LayoutAlgorithm.NARROW_COLUMNS);
-        webview.getSettings().setSavePassword(true);
-        webview.getSettings().setSaveFormData(true);
-        webview.getSettings().setEnableSmoothTransition(true);
-        webview.getSettings().setSupportZoom(true);
-
-
-        webview.getSettings().setDatabaseEnabled(true);
-        webview.getSettings().setLightTouchEnabled(true);
-        webview.getSettings().setSupportMultipleWindows(true);
-        webview.getSettings().setLoadsImagesAutomatically(true);
-
-        webview.setWebViewClient(new WebViewClient() {
-            ProgressDialog progressDialog;
-
-            //If you will not use this method url links are opeen in new brower not in webview
-            public boolean shouldOverrideUrlLoading(WebView view, String url) {
-                view.loadUrl(url);
-                return true;
-            }
-
-            //Show loader on url load
-            public void onLoadResource(WebView view, String url) {
-
-                if (progressDialog == null) {
-                    // in standard case YourActivity.this
-                    progressDialog = new ProgressDialog(Dashboard_Detail.this);
-                    progressDialog.setMessage("Loading...");
-//                    progressDialog.setCancelable(false);
-//                    progressDialog.show();
-                }
-            }
-
-            public void onPageFinished(WebView view, String url) {
-                try {
-                    progress_download_google.setVisibility(View.GONE);
-                    if (progressDialog.isShowing()) {
-                        progressDialog.dismiss();
-                        progressDialog = null;
-                    }
-                } catch (Exception exception) {
-                    exception.printStackTrace();
-                }
-            }
-
-        });
-
-        // Javascript inabled on webview
-//        webview.getSettings().setJavaScriptEnabled(true);
-//
-//        // Other webview options
-//        webview.getSettings().setLoadWithOverviewMode(true);
-//        webview.getSettings().setUseWideViewPort(true);
-//        webview.setScrollBarStyle(WebView.SCROLLBARS_OUTSIDE_OVERLAY);
-//        webview.setScrollbarFadingEnabled(false);
-//        webview.getSettings().setBuiltInZoomControls(true);
-//        webview.getSettings().setRenderPriority(WebSettings.RenderPriority.HIGH);
-//        webview.getSettings().setCacheMode(WebSettings.LOAD_NO_CACHE);
-        if (Build.VERSION.SDK_INT >= 19) {
-            webview.setLayerType(View.LAYER_TYPE_HARDWARE, null);
-        } else {
-            webview.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
-        }
-        /*
-         String summary = "<html><body>You scored <b>192</b> points.</body></html>";
-         webview.loadData(summary, "text/html", null);
-         */
-
-        //Load url in webview
-        webview.loadUrl(url);
-
-
+        new Webview_implementation().startWebView(url, webview, Dashboard_Detail.this);
     }
 
     @Override
@@ -521,7 +435,7 @@ public class Dashboard_Detail extends AppCompatActivity implements NavigationVie
 
     @Override
     public void dialog_control() {
-
+        progress_download_google.setVisibility(View.GONE);
     }
 
     @Override
@@ -546,6 +460,7 @@ public class Dashboard_Detail extends AppCompatActivity implements NavigationVie
                 break;
         }
     }
+
     public void animateFAB() {
 
         if (isFabOpen) {

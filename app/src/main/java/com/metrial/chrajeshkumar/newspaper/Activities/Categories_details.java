@@ -147,7 +147,7 @@ public class Categories_details extends AppCompatActivity implements HandlingVie
 
     @Override
     public void dialog_control() {
-//    Categories_details.progress_download_google.setVisibility(View.GONE);
+        progress_download_google.setVisibility(View.GONE);
     }
 
     @Override
