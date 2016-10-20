@@ -145,12 +145,13 @@
     </string-array>
     <!--sports-->
     <string-array name="sports_news">
-        <item>Yahoo Sports</item>
+        <item>NBC Sports</item>
+        <item>Fox Sports</item>
         <item>Espn Sports</item>
         <item>Bleacher Report</item>
         <item>CBSSports</item>
         <item>Sports Illustrated</item>
-        <item>NBC Sports</item>
+
     </string-array>
 
 

@@ -53,10 +53,10 @@ public class Endpoints {
     public static String techgig = "https://www.techgig.com/tech-news/editors-pick";
 
     //Fetch category urls (sports)
-    public static String yahoo_sports ="http://sports.yahoo.com/";
+    public static String fox_sports ="http://www.foxsports.com/";
     public static String espn ="http://www.espn.in/?src=com";
-    public static String bleachar_report ="";
-    public static String cbs_sports ="http://bleacherreport.com/";
+    public static String bleachar_report ="http://bleacherreport.com/";
+    public static String cbs_sports ="http://www.cbssports.com/";
     public static String si ="http://www.si.com/";
     public static String nbc_sports ="http://www.nbcsports.com/";
 

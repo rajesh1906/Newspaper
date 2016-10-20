@@ -5,6 +5,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.Build;
 import android.view.View;
+import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -31,13 +32,11 @@ public class Webview_implementation {
         webview.getSettings().setSaveFormData(true);
         webview.getSettings().setEnableSmoothTransition(true);
         webview.getSettings().setSupportZoom(true);
-
-
+        webview.setWebChromeClient(new WebChromeClient());
         webview.getSettings().setDatabaseEnabled(true);
         webview.getSettings().setLightTouchEnabled(true);
         webview.getSettings().setSupportMultipleWindows(true);
         webview.getSettings().setLoadsImagesAutomatically(true);
-
         webview.setWebViewClient(new WebViewClient() {
             ProgressDialog progressDialog;
 
