@@ -126,6 +126,15 @@ public class Papers_icon
             R.drawable.tech_gig
 
     };
+    public static Integer[] entertainment = {
+            R.drawable.movies,
+            R.drawable.songs,
+            R.drawable.beauty,
+            R.drawable.health,
+            R.drawable.weather,
+            R.drawable.tech_gig
+
+    };
 
     public static Integer[] sports = {
             R.drawable.nbcsports,

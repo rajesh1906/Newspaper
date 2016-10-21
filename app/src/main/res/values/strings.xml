@@ -151,9 +151,17 @@
         <item>Bleacher Report</item>
         <item>CBSSports</item>
         <item>Sports Illustrated</item>
-
     </string-array>
 
+    <!--Entertainment-->
+    <string-array name="entertainment">
+        <item>Movies</item>
+        <item>Songs</item>
+        <item>Beauty tips</item>
+        <item>Health</item>
+        <item>Weather</item>
+        <item>coming soon</item>
+    </string-array>
 
 
     <string name="youtube_api_key">AIzaSyANC7YXqT-P7JYbsFShIl_6dhAEdkfYIEo</string>

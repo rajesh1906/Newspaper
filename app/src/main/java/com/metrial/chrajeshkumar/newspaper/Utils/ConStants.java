@@ -34,6 +34,11 @@ public class ConStants {
     final public static String IMGULER = "Imguler";
     final public static String INSTAGRAM = "Instagram";
 
+    /*TEXT FOR CATEGORIES*/
+    final public static String SPORTS = "sports";
+    final public static String TECHNOLOGY = "technology";
+    final public static String ENTERTAINMENT = "entertainments";
+
    public  enum IDNTIFIACTION{ ENGLISH(1), TELUGU(2), HINDI(3), TAMIL(4),MALAYALAM(5);
         int identifaction;
         IDNTIFIACTION(int identifaction) {

@@ -81,7 +81,6 @@ public class Splash_screen extends AppCompatActivity implements Activiy_control,
                     transaction.setCustomAnimations(R.anim.fade_in, R.anim.fade_out);
                     transaction.replace(R.id.container, new Categories(), "Categories");
                     transaction.commit();
-                    overridePendingTransition(R.anim.left_slide_in, R.anim.left_slide_out);
                 } else {
                     error = ConStants.NETWORK_CONNECTION_ERROR;
                     Control.control_flow(ConStants.DIALOG_CONTROL, Splash_screen.this);
@@ -113,21 +112,22 @@ public class Splash_screen extends AppCompatActivity implements Activiy_control,
                 Control.control_flow(ConStants.ACTIVITY_CONTROL, Splash_screen.this);
                 break;
             case 1:
-//                Toast.makeText(this, "Under construction", Toast.LENGTH_LONG).show();
                 FragmentTransaction transaction1 = getSupportFragmentManager().beginTransaction();
                 transaction1.setCustomAnimations(R.anim.fade_in, R.anim.fade_out);
-                transaction1.add(R.id.container, new Fetch_categories("sports"), "Fetch_categories");
+                transaction1.add(R.id.container, new Fetch_categories(ConStants.SPORTS), "Fetch_categories");
                 transaction1.commit();
                 break;
             case 2:
                 FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
                 transaction.setCustomAnimations(R.anim.fade_in, R.anim.fade_out);
-                transaction.add(R.id.container, new Fetch_categories("technology"), "Fetch_categories");
+                transaction.add(R.id.container, new Fetch_categories(ConStants.TECHNOLOGY), "Fetch_categories");
                 transaction.commit();
-//                Toast.makeText(this, "Under construction", Toast.LENGTH_LONG).show();
                 break;
             case 3:
-                Toast.makeText(this, "Under construction", Toast.LENGTH_LONG).show();
+                FragmentTransaction transaction2 = getSupportFragmentManager().beginTransaction();
+                transaction2.setCustomAnimations(R.anim.fade_in, R.anim.fade_out);
+                transaction2.add(R.id.container, new Fetch_categories(ConStants.ENTERTAINMENT), "Fetch_categories");
+                transaction2.commit();
                 break;
         }
 
@@ -160,8 +160,6 @@ public class Splash_screen extends AppCompatActivity implements Activiy_control,
 
         FragmentManager fragmentManager = getSupportFragmentManager();
         Fragment currentFragment = fragmentManager.findFragmentById(R.id.container);
-//        Log.e("onback presses is  ", "<><>" + currentFragment.getTag());
-
         if(null!=currentFragment.getTag())
         {
             if (currentFragment.getTag().equals("Fetch_categories")) {

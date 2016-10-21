@@ -103,7 +103,7 @@ public class Categories_details extends AppCompatActivity implements HandlingVie
                     endpoint = Endpoints.si;
                     break;
             }
-        } else {
+        } else if(from_category.equals("technology")) {
             switch (position) {
                 case 0:
                     endpoint = Endpoints.bbc_technology;
@@ -122,6 +122,28 @@ public class Categories_details extends AppCompatActivity implements HandlingVie
                     break;
                 case 5:
                     endpoint = Endpoints.techgig;
+                    break;
+            }
+        }else if(from_category.equals("entertainments"))
+        {
+            switch (position) {
+                case 0:
+                    endpoint = Endpoints.movies;
+                    break;
+                case 1:
+                    endpoint = Endpoints.songs;
+                    break;
+                case 2:
+                    endpoint = Endpoints.beauty_tips;
+                    break;
+                case 3:
+                    endpoint = Endpoints.health;
+                    break;
+                case 4:
+                    endpoint = Endpoints.weather;
+                    break;
+                case 5:
+                    endpoint = Endpoints.comingsoon;
                     break;
             }
         }

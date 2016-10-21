@@ -52,14 +52,21 @@ public class Endpoints {
     public static String tech_news_world = "http://www.technewsworld.com/";
     public static String techgig = "https://www.techgig.com/tech-news/editors-pick";
 
-    //Fetch category urls (sports)
-    public static String fox_sports ="http://www.foxsports.com/";
-    public static String espn ="http://www.espn.in/?src=com";
-    public static String bleachar_report ="http://bleacherreport.com/";
-    public static String cbs_sports ="http://www.cbssports.com/";
-    public static String si ="http://www.si.com/";
-    public static String nbc_sports ="http://www.nbcsports.com/";
+    //Fetch category urls (Sports)
+    public static String fox_sports = "http://www.foxsports.com/";
+    public static String espn = "http://www.espn.in/?src=com";
+    public static String bleachar_report = "http://bleacherreport.com/";
+    public static String cbs_sports = "http://www.cbssports.com/";
+    public static String si = "http://www.si.com/";
+    public static String nbc_sports = "http://www.nbcsports.com/";
 
+    //Fetch category urls (Entertainment)
+    public static String movies = "http://movieweb.com/movies/2016/";
+    public static String songs = "http://gaana.com/";
+    public static String beauty_tips = "http://www.instyle.com/beauty/25-best-star-beauty-tips-all-time";
+    public static String health = "http://www.health.com/";
+    public static String weather = "http://worldweather.wmo.int/en/home.html";
+    public static String comingsoon = "";
 
     public static String getSearching(String search_string, int limit) {
 

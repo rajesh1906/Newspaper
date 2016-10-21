@@ -49,11 +49,14 @@ public class Fetch_categories extends Fragment implements Activiy_control{
         grid_categories.setNumColumns(2);
         switch (for_fetch)
         {
-            case "sports":
-                grid_categories.setAdapter(new News_deails_adaper(getActivity(), this.getResources().getStringArray(R.array.sports_news), Papers_icon.sports,Fetch_categories.this,for_fetch));
+            case ConStants.SPORTS:
+                grid_categories.setAdapter(new News_deails_adaper(getActivity(), this.getResources().getStringArray(R.array.sports_news), Papers_icon.sports,Fetch_categories.this,for_fetch,false));
                 break;
-            case "technology":
-                grid_categories.setAdapter(new News_deails_adaper(getActivity(), this.getResources().getStringArray(R.array.tech_news), Papers_icon.technologies,Fetch_categories.this,for_fetch));
+            case ConStants.TECHNOLOGY:
+                grid_categories.setAdapter(new News_deails_adaper(getActivity(), this.getResources().getStringArray(R.array.tech_news), Papers_icon.technologies,Fetch_categories.this,for_fetch,false));
+                break;
+            case ConStants.ENTERTAINMENT:
+                grid_categories.setAdapter(new News_deails_adaper(getActivity(), this.getResources().getStringArray(R.array.entertainment), Papers_icon.entertainment,Fetch_categories.this,for_fetch,true));
                 break;
         }
 
@@ -79,9 +82,7 @@ public class Fetch_categories extends Fragment implements Activiy_control{
     @Override
     public void activityCallback(HashMap<String, String> params1) {
         Log.e("activiy callback is ","<><>"+Fetch_categories.for_fetch);
-//        fromActivity = Categories_details.class;
-//        params = params1;
-//        Control.control_flow(ConStants.ACTIVITY_CONTROL, getActivity());
+        //pending for code optimization
         Intent intent = new Intent(getActivity(), Categories_details.class);
         intent.putExtra("params", params1);
         getActivity().startActivity(intent);

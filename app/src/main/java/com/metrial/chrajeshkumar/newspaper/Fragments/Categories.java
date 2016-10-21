@@ -18,9 +18,9 @@ import butterknife.Bind;
  */
 
 public class Categories extends Fragment {
+
     @Bind(R.id.grid_categories)
     CustomeGridview grid_categories;
-
 
     View view;
 
