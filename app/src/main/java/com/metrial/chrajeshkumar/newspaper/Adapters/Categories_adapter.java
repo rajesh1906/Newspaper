@@ -70,9 +70,6 @@ public class Categories_adapter extends BaseAdapter implements HandlingViews {
             grid = inflater.inflate(R.layout.dash_board_item, null);
             TextView textView = (TextView) grid.findViewById(R.id.gridview_text);
             ImageView imageView = (ImageView) grid.findViewById(R.id.gridview_image);
-//            textView.setText(string[p]);
-//            Bitmap bitmap = BitmapFactory.decodeResource(mContext.getResources(), Imageid.getResourceId(p, -1));
-//            imageItems.add(new ImageItem(bitmap, "Image#" + i));
             textView.setText(string[p]);
             imageView.setImageResource(Imageid[p]);
             imageView.setOnClickListener(new View.OnClickListener() {

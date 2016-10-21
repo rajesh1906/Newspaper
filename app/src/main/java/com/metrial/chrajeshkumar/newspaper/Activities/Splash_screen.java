@@ -77,7 +77,6 @@ public class Splash_screen extends AppCompatActivity implements Activiy_control,
 
                 if (CheckNetwork.isOnline(Splash_screen.this)) {
                     FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-//                    transaction.setCustomAnimations(R.anim.anim_slide_in_left, R.anim.anim_slide_in_right);
                     transaction.setCustomAnimations(R.anim.fade_in, R.anim.fade_out);
                     transaction.replace(R.id.container, new Categories(), "Categories");
                     transaction.commit();

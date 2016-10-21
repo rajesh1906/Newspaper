@@ -79,7 +79,7 @@ public class Categories_details extends AppCompatActivity implements HandlingVie
 
     public String get_Endpoint(int position, String from_category) {
         String endpoint = "";
-        if (from_category.equals("sports")) {
+        if (from_category.equals(ConStants.SPORTS)) {
             switch (position) {
                 case 0:
                     endpoint = Endpoints.nbc_sports;
@@ -103,7 +103,7 @@ public class Categories_details extends AppCompatActivity implements HandlingVie
                     endpoint = Endpoints.si;
                     break;
             }
-        } else if(from_category.equals("technology")) {
+        } else if(from_category.equals(ConStants.TECHNOLOGY)) {
             switch (position) {
                 case 0:
                     endpoint = Endpoints.bbc_technology;
@@ -124,7 +124,7 @@ public class Categories_details extends AppCompatActivity implements HandlingVie
                     endpoint = Endpoints.techgig;
                     break;
             }
-        }else if(from_category.equals("entertainments"))
+        }else if(from_category.equals(ConStants.ENTERTAINMENT))
         {
             switch (position) {
                 case 0:
