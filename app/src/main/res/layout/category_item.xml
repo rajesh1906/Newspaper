@@ -13,6 +13,7 @@
         android:layout_width="160dp"
         android:layout_centerHorizontal="true"
         card_view:cardElevation="10dp"
+        card_view:cardUseCompatPadding="true"
         android:layout_height="175dp"
         >
         <RelativeLayout

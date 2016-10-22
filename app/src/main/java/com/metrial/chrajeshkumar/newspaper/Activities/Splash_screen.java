@@ -10,7 +10,10 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
+import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.widget.AdapterView;
 import android.widget.Toast;
 
 import com.metrial.chrajeshkumar.newspaper.DashBoardActivity;
@@ -181,4 +184,5 @@ public class Splash_screen extends AppCompatActivity implements Activiy_control,
         }
 
     }
+
 }

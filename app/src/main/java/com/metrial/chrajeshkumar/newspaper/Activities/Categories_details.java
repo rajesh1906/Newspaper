@@ -3,8 +3,11 @@ package com.metrial.chrajeshkumar.newspaper.Activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.animation.AccelerateInterpolator;
@@ -13,6 +16,7 @@ import android.view.animation.AnimationUtils;
 import android.webkit.WebView;
 import android.widget.ProgressBar;
 
+import com.metrial.chrajeshkumar.newspaper.DashBoardActivity;
 import com.metrial.chrajeshkumar.newspaper.Helper.Activiy_control;
 import com.metrial.chrajeshkumar.newspaper.Helper.HandlingViews;
 import com.metrial.chrajeshkumar.newspaper.Helper.Webview_implementation;
@@ -77,20 +81,45 @@ public class Categories_details extends AppCompatActivity implements HandlingVie
         new Webview_implementation().startWebView(get_Endpoint(position, from_category), webview, Categories_details.this);
     }
 
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (event.getAction() == KeyEvent.ACTION_DOWN) {
+            switch (keyCode) {
+                case KeyEvent.KEYCODE_BACK:
+                    if (webview.canGoBack()) {
+                        webview.goBack();
+                    } else {
+                      {
+                            backAnimation();
+                      }
+
+                    }
+                    return true;
+            }
+
+        }
+        return super.onKeyDown(keyCode, event);
+    }
+
+    public void backAnimation()
+
+    {
+        finish();
+        overridePendingTransition(R.anim.anim_slide_in_right,
+                R.anim.left_slide_out);
+    }
+
     public String get_Endpoint(int position, String from_category) {
         String endpoint = "";
         if (from_category.equals(ConStants.SPORTS)) {
             switch (position) {
                 case 0:
                     endpoint = Endpoints.nbc_sports;
-
-
                     break;
                 case 1:
                     endpoint = Endpoints.fox_sports;
                     break;
                 case 2:
-
                     endpoint = Endpoints.espn;
                     break;
                 case 3:

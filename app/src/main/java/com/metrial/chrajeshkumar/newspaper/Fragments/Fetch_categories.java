@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 
 import com.metrial.chrajeshkumar.newspaper.Activities.Categories_details;
 import com.metrial.chrajeshkumar.newspaper.Activities.Splash_screen;
@@ -87,5 +88,31 @@ public class Fetch_categories extends Fragment implements Activiy_control{
         intent.putExtra("params", params1);
         getActivity().startActivity(intent);
         getActivity().overridePendingTransition(R.anim.left_slide_in, R.anim.left_slide_out);
+    }
+
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        unbindDrawables(view.findViewById(R.id.gridview_image));
+        System.gc();
+
+    }
+
+
+    private void unbindDrawables(View view)
+    {
+        if (view.getBackground() != null)
+        {
+            view.getBackground().setCallback(null);
+        }
+        if (view instanceof ViewGroup && !(view instanceof AdapterView))
+        {
+            for (int i = 0; i < ((ViewGroup) view).getChildCount(); i++)
+            {
+                unbindDrawables(((ViewGroup) view).getChildAt(i));
+            }
+            ((ViewGroup) view).removeAllViews();
+        }
     }
 }

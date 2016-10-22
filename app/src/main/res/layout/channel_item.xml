@@ -13,6 +13,7 @@
         android:layout_gravity="center"
         android:layout_width="match_parent"
         card_view:cardCornerRadius="8dp"
+        card_view:cardUseCompatPadding="true"
         android:layout_height="wrap_content"
         >
         <LinearLayout

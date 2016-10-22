@@ -106,6 +106,8 @@ public class Dashboard extends BaseAdapter implements HandlingViews {
         return grid;
     }
 
+
+
     @Override
     public void implementation(String message, int position) {
 

@@ -5,6 +5,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 
 import com.metrial.chrajeshkumar.newspaper.Adapters.Categories_adapter;
 import com.metrial.chrajeshkumar.newspaper.Helper.CustomeGridview;
@@ -38,5 +39,30 @@ public class Categories extends Fragment {
 
     public void InitilizeViews(View view) {
         grid_categories = (CustomeGridview) view.findViewById(R.id.grid_categories);
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        unbindDrawables(view.findViewById(R.id.gridview_image));
+        System.gc();
+
+    }
+
+
+    private void unbindDrawables(View view)
+    {
+        if (view.getBackground() != null)
+        {
+            view.getBackground().setCallback(null);
+        }
+        if (view instanceof ViewGroup && !(view instanceof AdapterView))
+        {
+            for (int i = 0; i < ((ViewGroup) view).getChildCount(); i++)
+            {
+                unbindDrawables(((ViewGroup) view).getChildAt(i));
+            }
+            ((ViewGroup) view).removeAllViews();
+        }
     }
 }
