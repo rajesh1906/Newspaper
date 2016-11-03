@@ -16,7 +16,7 @@ public class Show_dialog
 {
     public static void show_dialog(int from, Context context)
     {
-        String message="";
+        String message=context.getString(R.string.network_error);
         Log.e("from","<><"+from);
         NetworkChangeReceiver receiver;
         switch (from)

@@ -114,22 +114,23 @@ public class Categories_details extends AppCompatActivity implements HandlingVie
         if (from_category.equals(ConStants.SPORTS)) {
             switch (position) {
                 case 0:
-                    endpoint = Endpoints.nbc_sports;
+                    endpoint = Endpoints.football_news;
                     break;
                 case 1:
-                    endpoint = Endpoints.fox_sports;
+                    endpoint = Endpoints.criclet_news;
+
                     break;
                 case 2:
-                    endpoint = Endpoints.espn;
+                    endpoint = Endpoints.tennis_news;
                     break;
                 case 3:
-                    endpoint = Endpoints.bleachar_report;
+                    endpoint = Endpoints.hockey_news;
                     break;
                 case 4:
-                    endpoint = Endpoints.cbs_sports;
+                    endpoint = Endpoints.volleyball_news;
                     break;
                 case 5:
-                    endpoint = Endpoints.si;
+                    endpoint = Endpoints.table_tennis;
                     break;
             }
         } else if(from_category.equals(ConStants.TECHNOLOGY)) {
@@ -172,7 +173,7 @@ public class Categories_details extends AppCompatActivity implements HandlingVie
                     endpoint = Endpoints.weather;
                     break;
                 case 5:
-                    endpoint = Endpoints.comingsoon;
+                    endpoint = Endpoints.astrology;
                     break;
             }
         }

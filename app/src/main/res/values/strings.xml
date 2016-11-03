@@ -145,12 +145,12 @@
     </string-array>
     <!--sports-->
     <string-array name="sports_news">
-        <item>NBC Sports</item>
-        <item>Fox Sports</item>
-        <item>Espn Sports</item>
-        <item>Bleacher Report</item>
-        <item>CBSSports</item>
-        <item>Sports Illustrated</item>
+        <item>Football News</item>
+        <item>Cricket News</item>
+        <item>Tennis News</item>
+        <item>Hockey News</item>
+        <item>Volleyball News</item>
+        <item>Table Tennis</item>
     </string-array>
 
     <!--Entertainment-->
@@ -160,7 +160,7 @@
         <item>Beauty tips</item>
         <item>Health</item>
         <item>Weather</item>
-        <item>coming soon</item>
+        <item>Astrology</item>
     </string-array>
 
 
