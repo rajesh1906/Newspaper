@@ -51,7 +51,7 @@ public class Fetch_categories extends Fragment implements Activiy_control{
         switch (for_fetch)
         {
             case ConStants.SPORTS:
-                grid_categories.setAdapter(new News_deails_adaper(getActivity(), this.getResources().getStringArray(R.array.sports_news), Papers_icon.sports,Fetch_categories.this,for_fetch,false));
+                grid_categories.setAdapter(new News_deails_adaper(getActivity(), this.getResources().getStringArray(R.array.sports_news), Papers_icon.sports,Fetch_categories.this,for_fetch,true));
                 break;
             case ConStants.TECHNOLOGY:
                 grid_categories.setAdapter(new News_deails_adaper(getActivity(), this.getResources().getStringArray(R.array.tech_news), Papers_icon.technologies,Fetch_categories.this,for_fetch,false));

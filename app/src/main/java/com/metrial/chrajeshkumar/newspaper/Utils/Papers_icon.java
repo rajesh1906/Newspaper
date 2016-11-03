@@ -137,12 +137,12 @@ public class Papers_icon
     };
 
     public static Integer[] sports = {
-            R.drawable.nbcsports,
-            R.drawable.fox_sports,
-            R.drawable.espn,
-            R.drawable.bleacherreport,
-            R.drawable.cbssports,
-            R.drawable.si
+            R.drawable.football,
+            R.drawable.cricket,
+            R.drawable.tennis,
+            R.drawable.hockey,
+            R.drawable.vollyball,
+            R.drawable.table_tennis
 
 
     };

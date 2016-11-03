@@ -57,7 +57,7 @@ public class Endpoints {
     public static String criclet_news = "http://www.espncricinfo.com/";
     public static String hockey_news = "http://www.fih.ch/";
     public static String volleyball_news = "http://www.fivb.com/en/about/news";
-    public static String table_tennis = "http://www.si.com/";
+    public static String table_tennis = "http://www.tabletennisprss.co.uk/";
     public static String football_news = "http://www.football365.com/";
 
     //Fetch category urls (Entertainment)
