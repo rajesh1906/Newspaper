@@ -132,7 +132,7 @@ public class Papers_icon
             R.drawable.beauty,
             R.drawable.health,
             R.drawable.weather,
-            R.drawable.tech_gig
+            R.drawable.astrology
 
     };
 

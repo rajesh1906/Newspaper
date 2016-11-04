@@ -64,9 +64,9 @@ public class Endpoints {
     public static String movies = "http://movieweb.com/movies/2016/";
     public static String songs = "http://gaana.com/";
     public static String beauty_tips = "http://www.instyle.com/beauty/25-best-star-beauty-tips-all-time";
-    public static String health = "http://www.health.com/";
+    public static String health = "http://www.myhealthtips.in/";
     public static String weather = "http://worldweather.wmo.int/en/home.html";
-    public static String astrology = "";
+    public static String astrology = "http://www.horoscope.com/us/index.aspx";
 
     public static String getSearching(String search_string, int limit) {
 
