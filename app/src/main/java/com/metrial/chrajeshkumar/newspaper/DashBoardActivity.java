@@ -479,7 +479,12 @@ public class DashBoardActivity extends AppCompatActivity implements NavigationVi
     @Override
     protected void onPause() {
         super.onPause();
-        unbindDrawables(findViewById(R.id.gridview_image));
+        try {
+            unbindDrawables(findViewById(R.id.gridview_image));
+        }catch (Exception e)
+        {
+            e.printStackTrace();
+        }
         System.gc();
 
     }

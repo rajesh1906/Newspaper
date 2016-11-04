@@ -1,65 +1,112 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-     android:layout_width="match_parent"
     android:id="@+id/rel_view"
+    android:layout_width="match_parent"
+    android:layout_height="140dp"
     android:layout_marginLeft="5dp"
-    android:layout_marginRight="5dp"
-    android:layout_height="140dp">
+    android:layout_marginRight="5dp">
 
-    <android.support.v7.widget.CardView
-        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
         android:id="@+id/card_view"
-        card_view:cardElevation="7dp"
         android:layout_width="match_parent"
-        card_view:cardUseCompatPadding="true"
         android:layout_height="140dp"
-        >
+        card_view:cardBackgroundColor="@color/bright_gray"
+        card_view:cardElevation="10dp"
+        card_view:cardUseCompatPadding="true">
+
         <RelativeLayout
+            android:id="@+id/linearLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/linearLayout"
 
             android:orientation="vertical">
 
-            <ImageView
-                android:id="@+id/img_thumb"
-                android:layout_width="160dp"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:scaleType="fitXY"
-                android:padding="10dp"
+            <RelativeLayout
+                android:id="@+id/rel_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
 
-                />
+
+                <ImageView
+                    android:id="@+id/img_thumb"
+                    android:layout_width="160dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:padding="10dp"
+                    android:scaleType="fitXY"
+
+                    />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/play_icon_white" />
+            </RelativeLayout>
 
             <TextView
                 android:id="@+id/gridview_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:layout_toRightOf="@+id/img_thumb"
-                android:text="Grid View Item"
+                android:layout_toRightOf="@+id/rel_image"
                 android:maxLength="25"
                 android:padding="10dp"
-                android:textColor="#444"
+                android:text="Grid View Item"
+                android:textColor="@color/White"
                 android:textSize="14sp"
-                android:visibility="visible"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:visibility="visible" />
+
             <TextView
                 android:id="@+id/description"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_above="@+id/rel_duration"
                 android:layout_marginTop="5dp"
-                android:layout_toRightOf="@+id/img_thumb"
-                android:layout_alignParentBottom="true"
-                android:text="Grid View Item"
+               android:layout_marginBottom="5dp"
+                android:layout_toRightOf="@+id/rel_image"
                 android:maxLength="35"
-                android:paddingLeft="10dp"
-                android:paddingBottom="30dp"
-                android:textColor="#444"
-                android:textSize="11sp"
-                android:visibility="visible"
-                android:textStyle="bold" />
 
+                android:paddingLeft="10dp"
+                android:text="Grid View Item"
+                android:textColor="@color/White"
+                android:textSize="11sp"
+                android:textStyle="bold"
+                android:visibility="visible" />
+
+            <RelativeLayout
+                android:id="@+id/rel_duration"
+                android:layout_width="100dp"
+                android:layout_height="20dp"
+                android:layout_marginBottom="5dp"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentBottom="true">
+
+            <ImageView
+
+                android:id="@+id/img_timer"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_centerVertical="true"
+                android:src="@drawable/clock"
+                android:layout_alignParentBottom="true"
+                android:layout_marginRight="5dp"
+                android:layout_toLeftOf="@+id/txt_duration"/>
+            <TextView
+                android:id="@+id/txt_duration"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="01:00"
+                android:layout_marginRight="5dp"
+                android:layout_centerVertical="true"
+                android:typeface="serif"
+                android:textColor="@color/White"
+                android:textSize="12dp"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"/>
+            </RelativeLayout>
         </RelativeLayout>
 
 

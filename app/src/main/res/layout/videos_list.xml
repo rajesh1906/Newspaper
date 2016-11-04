@@ -4,11 +4,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     >
-
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/Very_Light_Grey"></RelativeLayout>
 <LinearLayout
     android:layout_width="match_parent"
     android:id="@+id/android_coordinator_layout"
     android:layout_height="match_parent"
+
     android:orientation="vertical">
 
     <FrameLayout
@@ -80,7 +84,8 @@
         >
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            >
     <com.google.android.youtube.player.YouTubePlayerView
         android:id="@+id/youtube_view"
         android:layout_width="match_parent"
@@ -226,4 +231,5 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         />
+
 </RelativeLayout>
