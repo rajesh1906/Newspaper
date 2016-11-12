@@ -8,6 +8,7 @@ public class Endpoints {
     public static String searching = "";
     public static String nextpagetoken = "";
     public static String search_string = "";
+    public static String duratoin_url="";
 
     public static String time_of_india = "http://timesofindia.indiatimes.com/";
     public static String hindustan_times = "http://www.hindustantimes.com/";
@@ -76,6 +77,12 @@ public class Endpoints {
         searching = "https://www.googleapis.com/youtube/v3/search?part=snippet&q=" + search_string + "&type=video&key=" + Config.YOUTUBE_API_KEY + "&maxResults=" + limit + "&pageToken=" + nextpagetoken;
         return searching;
 
+    }
+
+    public static String getVideo_duration_url(String videoId)
+    {
+        duratoin_url ="https://www.googleapis.com/youtube/v3/videos?part=contentDetails&id="+videoId+"&key="+ Config.YOUTUBE_API_KEY ;
+        return duratoin_url;
     }
 
 

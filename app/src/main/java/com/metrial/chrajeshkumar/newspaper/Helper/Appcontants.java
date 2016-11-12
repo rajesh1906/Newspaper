@@ -62,4 +62,64 @@ public class Appcontants extends AppCompatActivity
         return pixels;
     }
 
+
+    public static String getTimeFromString(String duration) {
+        // TODO Auto-generated method stub
+        String time = "";
+        boolean hourexists = false, minutesexists = false, secondsexists = false;
+        if (duration.contains("H"))
+            hourexists = true;
+        if (duration.contains("M"))
+            minutesexists = true;
+        if (duration.contains("S"))
+            secondsexists = true;
+        if (hourexists) {
+            String hour = "";
+            hour = duration.substring(duration.indexOf("T") + 1,
+                    duration.indexOf("H"));
+            if (hour.length() == 1)
+                hour = "0" + hour;
+            time += hour + ":";
+        }
+        if (minutesexists) {
+            String minutes = "";
+            if (hourexists)
+                minutes = duration.substring(duration.indexOf("H") + 1,
+                        duration.indexOf("M"));
+            else
+                minutes = duration.substring(duration.indexOf("T") + 1,
+                        duration.indexOf("M"));
+            if (minutes.length() == 1)
+                minutes = "0" + minutes;
+            time += minutes + ":";
+        } else {
+            time += "00:";
+        }
+        if (secondsexists) {
+            String seconds = "";
+            if (hourexists) {
+                if (minutesexists)
+                    seconds = duration.substring(duration.indexOf("M") + 1,
+                            duration.indexOf("S"));
+                else
+                    seconds = duration.substring(duration.indexOf("H") + 1,
+                            duration.indexOf("S"));
+            } else if (minutesexists)
+                seconds = duration.substring(duration.indexOf("M") + 1,
+                        duration.indexOf("S"));
+            else
+                seconds = duration.substring(duration.indexOf("T") + 1,
+                        duration.indexOf("S"));
+            if (seconds.length() == 1)
+                seconds = "0" + seconds;
+            time += seconds;
+        }
+        return time;
+    }
+
+
+
+    public static float pxFromDp(float dp, Context mContext) {
+        return dp * mContext.getResources().getDisplayMetrics().density;
+    }
 }

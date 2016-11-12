@@ -57,6 +57,7 @@ import com.metrial.chrajeshkumar.newspaper.Adapters.Dashboard;
 import com.metrial.chrajeshkumar.newspaper.Adapters.Horizontal_Adapter;
 import com.metrial.chrajeshkumar.newspaper.Authentication.Twitter;
 import com.metrial.chrajeshkumar.newspaper.Helper.Activiy_control;
+import com.metrial.chrajeshkumar.newspaper.Helper.Appcontants;
 import com.metrial.chrajeshkumar.newspaper.Helper.CustomeGridview;
 import com.metrial.chrajeshkumar.newspaper.Helper.HandlingViews;
 import com.metrial.chrajeshkumar.newspaper.Helper.Recycle_item_view;
@@ -291,6 +292,9 @@ public class DashBoardActivity extends AppCompatActivity implements NavigationVi
 
 
         initTwitterConfigs();
+
+//        Log.e("duration is ","<><<"+Appcontants.getTimeFromString("PT1H11M14S"));
+
 
     }
 

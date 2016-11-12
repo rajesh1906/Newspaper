@@ -2,6 +2,7 @@ package com.metrial.chrajeshkumar.newspaper.Activities;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -27,9 +28,12 @@ import com.google.android.youtube.player.YouTubePlayer;
 import com.google.android.youtube.player.YouTubePlayerView;
 import com.metrial.chrajeshkumar.newspaper.Adapters.Youtube_view_item;
 import com.metrial.chrajeshkumar.newspaper.Callbacks.Youtube_api_callback;
+import com.metrial.chrajeshkumar.newspaper.Callbacks.Youtube_api_for_duration;
 import com.metrial.chrajeshkumar.newspaper.Helper.APIService;
+import com.metrial.chrajeshkumar.newspaper.Helper.Appcontants;
 import com.metrial.chrajeshkumar.newspaper.Helper.Edittext_focus;
 import com.metrial.chrajeshkumar.newspaper.Helper.HandlingViews;
+import com.metrial.chrajeshkumar.newspaper.Helper.Update_youtube_timer;
 import com.metrial.chrajeshkumar.newspaper.Pojos.Items;
 import com.metrial.chrajeshkumar.newspaper.Pojos.MyPojo;
 import com.metrial.chrajeshkumar.newspaper.R;
@@ -38,6 +42,9 @@ import com.metrial.chrajeshkumar.newspaper.Utils.ConStants;
 import com.metrial.chrajeshkumar.newspaper.Utils.Config;
 import com.metrial.chrajeshkumar.newspaper.Utils.Control;
 import com.metrial.chrajeshkumar.newspaper.Utils.Endpoints;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -49,7 +56,7 @@ import butterknife.OnClick;
 /**
  * Created by ChRajeshKumar on 9/14/2016.
  */
-public class Videos_list extends YouTubeBaseActivity implements APIService, HandlingViews, YouTubePlayer.OnInitializedListener, Edittext_focus {
+public class Videos_list extends YouTubeBaseActivity implements APIService, HandlingViews, YouTubePlayer.OnInitializedListener, Edittext_focus, Update_youtube_timer {
 
     private static final int RECOVERY_REQUEST = 1;
     @Bind(R.id.recycler_view)
@@ -74,6 +81,14 @@ public class Videos_list extends YouTubeBaseActivity implements APIService, Hand
     TextView txt_title_val;
     @Bind(R.id.txt_description_val)
     TextView txt_description_val;
+    @Bind(R.id.txt_duration)
+    TextView txt_duration;
+    @Bind(R.id.img_timer)
+    ImageView img_timer;
+    @Bind(R.id.img_liveicon)
+    ImageView img_liveicon;
+    @Bind(R.id.txt_live)
+    TextView txt_live;
 
 
     YouTubePlayer youTubePlayer_outer;
@@ -221,6 +236,7 @@ public class Videos_list extends YouTubeBaseActivity implements APIService, Hand
             youTubeView.initialize(Config.YOUTUBE_API_KEY, this);
             txt_title_val.setText(mypojo.getItems().get(0).getSnippet().getTitle());
             txt_description_val.setText(mypojo.getItems().get(0).getSnippet().getDescription());
+            new Youtube_api_for_duration(video_id, Videos_list.this).execute();
         }
 
         if (start == 5) {
@@ -247,6 +263,8 @@ public class Videos_list extends YouTubeBaseActivity implements APIService, Hand
         news_dialog.setVisibility(View.GONE);
         youtube_view_item.notifyDataSetChanged();
 
+//        new Youtube_api_for_duration(mypojo,Videos_list.this).execute();
+
     }
 
     @Override
@@ -255,7 +273,7 @@ public class Videos_list extends YouTubeBaseActivity implements APIService, Hand
     }
 
     @Override
-    public void conncetion(String videoId,String title,String description) {
+    public void conncetion(String videoId, String title, String description) {
         if (CheckNetwork.isOnline(this)) {
 
             Bundle bundle = new Bundle();
@@ -265,6 +283,7 @@ public class Videos_list extends YouTubeBaseActivity implements APIService, Hand
             txt_title_val.setText(title);
             txt_description_val.setText(description);
             youTubePlayer_outer.loadVideo(video_id);
+            new Youtube_api_for_duration(video_id, Videos_list.this).execute();
         } else {
             error = ConStants.NETWORK_CONNECTION_ERROR;
             Control.control_flow(ConStants.DIALOG_CONTROL, this);
@@ -315,6 +334,24 @@ public class Videos_list extends YouTubeBaseActivity implements APIService, Hand
 
     }
 
+    @Override
+    public void update_youtube_timer(String timer_response) {
+        Log.e("timer is ", "response is ????" + getVideo_Duration(timer_response));
+        if (!getVideo_Duration(timer_response).equalsIgnoreCase("00:00")) {
+            img_timer.setVisibility(View.VISIBLE);
+            img_liveicon.setVisibility(View.GONE);
+            txt_duration.setVisibility(View.VISIBLE);
+            txt_duration.setText(getVideo_Duration(timer_response));
+            txt_live.setVisibility(View.GONE);
+        } else {
+            img_timer.setVisibility(View.GONE);
+            img_liveicon.setVisibility(View.VISIBLE);
+            txt_duration.setVisibility(View.GONE);
+            txt_live.setVisibility(View.VISIBLE);
+        }
+
+    }
+
 
     public class EndlessScrollListener extends RecyclerView.OnScrollListener {
         private RecyclerView listView;
@@ -355,6 +392,25 @@ public class Videos_list extends YouTubeBaseActivity implements APIService, Hand
                 }
             }
         }
+    }
+
+
+    public String getVideo_Duration(String timer_response) {
+        String duration = "";
+        try {
+            JSONObject jsonObject = new JSONObject(timer_response);
+            JSONArray jsonArray = jsonObject.getJSONArray("items");
+            for (int i = 0; i < jsonArray.length(); i++) {
+                JSONObject inner_json = jsonArray.getJSONObject(i);
+                JSONObject deepinner_json = inner_json.getJSONObject("contentDetails");
+                duration = Appcontants.getTimeFromString(deepinner_json.getString("duration"));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return duration;
+
     }
 
 

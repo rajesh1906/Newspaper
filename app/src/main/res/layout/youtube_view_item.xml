@@ -63,12 +63,11 @@
                 android:id="@+id/description"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_above="@+id/rel_duration"
+                android:layout_below="@+id/gridview_text"
+                android:layout_marginBottom="5dp"
                 android:layout_marginTop="5dp"
-               android:layout_marginBottom="5dp"
                 android:layout_toRightOf="@+id/rel_image"
                 android:maxLength="35"
-
                 android:paddingLeft="10dp"
                 android:text="Grid View Item"
                 android:textColor="@color/White"
@@ -80,32 +79,34 @@
                 android:id="@+id/rel_duration"
                 android:layout_width="100dp"
                 android:layout_height="20dp"
-                android:layout_marginBottom="5dp"
+                android:layout_alignParentBottom="true"
                 android:layout_alignParentRight="true"
-                android:layout_alignParentBottom="true">
+                android:layout_marginBottom="5dp"
+                android:visibility="gone">
 
-            <ImageView
+                <ImageView
 
-                android:id="@+id/img_timer"
-                android:layout_width="15dp"
-                android:layout_height="15dp"
-                android:layout_centerVertical="true"
-                android:src="@drawable/clock"
-                android:layout_alignParentBottom="true"
-                android:layout_marginRight="5dp"
-                android:layout_toLeftOf="@+id/txt_duration"/>
-            <TextView
-                android:id="@+id/txt_duration"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="01:00"
-                android:layout_marginRight="5dp"
-                android:layout_centerVertical="true"
-                android:typeface="serif"
-                android:textColor="@color/White"
-                android:textSize="12dp"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentRight="true"/>
+                    android:id="@+id/img_timer"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="5dp"
+                    android:layout_toLeftOf="@+id/txt_duration"
+                    android:src="@drawable/clock" />
+
+                <TextView
+                    android:id="@+id/txt_duration"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="5dp"
+                    android:text="01:00"
+                    android:textColor="@color/White"
+                    android:textSize="12dp"
+                    android:typeface="serif" />
             </RelativeLayout>
         </RelativeLayout>
 

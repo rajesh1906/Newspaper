@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.metrial.chrajeshkumar.newspaper.Helper.HandlingViews;
+import com.metrial.chrajeshkumar.newspaper.Helper.Update_youtube_timer;
 import com.metrial.chrajeshkumar.newspaper.Pojos.MyPojo;
 import com.metrial.chrajeshkumar.newspaper.R;
 
@@ -31,6 +32,8 @@ public class Youtube_view_item extends RecyclerView.Adapter<Youtube_view_item.My
 Log.e("coming to adapter is ","<><"+pojo);
         this.handlingViews = (HandlingViews) this.mContext;
     }
+
+
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView title,description;
@@ -84,6 +87,11 @@ Log.e("coming to adapter is ","<><"+pojo);
     @Override
     public int getItemCount() {
         return pojo.getItems().size();
+    }
+
+    public void SetTimer(String response){
+
+
     }
 }
 
