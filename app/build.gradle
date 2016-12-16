@@ -7,6 +7,7 @@ android {
 
     defaultConfig {
         applicationId "com.metrial.chrajeshkumar.newspaper"
+//        buildConfigField 'String', 'SECRET_KEY', toJavaCodeString(SECRET_KEY)
         minSdkVersion 15
         targetSdkVersion 23
         versionCode 1
@@ -16,7 +17,14 @@ android {
         release {
             minifyEnabled true
             shrinkResources true
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            proguardFile 'newspaper.pro'
+            proguardFiles getDefaultProguardFile('proguard-android.txt')
+        }
+        debug {
+            minifyEnabled true
+            shrinkResources true
+            proguardFile 'newspaper.pro'
+            proguardFiles getDefaultProguardFile('proguard-android.txt')
         }
     }
     packagingOptions {

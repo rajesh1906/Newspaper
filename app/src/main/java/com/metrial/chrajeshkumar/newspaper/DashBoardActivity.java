@@ -155,6 +155,7 @@ public class DashBoardActivity extends AppCompatActivity implements NavigationVi
     private static twitter4j.Twitter twitter;
     String consumerKey, consumerSecret, callbackUrl;
     AccessToken accessToken;
+    public static String SECRET_KEY="ab76239ef64454356754239ef6210898";
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
      * See https://g.co/AppIndexing/AndroidStudio for more information.
