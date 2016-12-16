@@ -125,12 +125,7 @@ public class DashBoardActivity extends AppCompatActivity implements NavigationVi
     TextView txt_title;
     @Bind(R.id.txt_sticky)
     TextView txt_sticky;
-
-
-    TextView txt_share;
     RecyclerView recycler_share;
-    CardView card_view;
-
     int error;
     Activity activity;
     HashMap<String, String> params = new HashMap<>();
