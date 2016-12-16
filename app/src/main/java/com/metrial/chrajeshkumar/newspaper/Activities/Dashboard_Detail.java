@@ -145,8 +145,6 @@ public class Dashboard_Detail extends AppCompatActivity implements NavigationVie
 
     public void businessLogic(String message) {
         if (message.equals("The Times of India")) {
-
-
             English_paper_endpoints();
         } else if (message.equals("Eenadu")) {
             Telugu_paper_endpoints();
