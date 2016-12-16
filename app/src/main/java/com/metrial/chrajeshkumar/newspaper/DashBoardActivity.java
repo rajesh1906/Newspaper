@@ -290,13 +290,7 @@ public class DashBoardActivity extends AppCompatActivity implements NavigationVi
                 }
             }
         });
-
-
         initTwitterConfigs();
-
-//        Log.e("duration is ","<><<"+Appcontants.getTimeFromString("PT1H11M14S"));
-
-
     }
 
     /* Reading twitter essential configuration parameters from strings.xml */
