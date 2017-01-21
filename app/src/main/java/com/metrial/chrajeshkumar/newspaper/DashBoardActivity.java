@@ -23,7 +23,6 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.NestedScrollView;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.graphics.Palette;
-import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -50,6 +49,7 @@ import com.facebook.share.widget.ShareDialog;
 import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.common.api.GoogleApiClient;
+
 import com.metrial.chrajeshkumar.newspaper.Activities.Dashboard_Detail;
 import com.metrial.chrajeshkumar.newspaper.Activities.Videos_list;
 import com.metrial.chrajeshkumar.newspaper.Adapters.Channel_list_adapter;
@@ -57,7 +57,6 @@ import com.metrial.chrajeshkumar.newspaper.Adapters.Dashboard;
 import com.metrial.chrajeshkumar.newspaper.Adapters.Horizontal_Adapter;
 import com.metrial.chrajeshkumar.newspaper.Authentication.Twitter;
 import com.metrial.chrajeshkumar.newspaper.Helper.Activiy_control;
-import com.metrial.chrajeshkumar.newspaper.Helper.Appcontants;
 import com.metrial.chrajeshkumar.newspaper.Helper.CustomeGridview;
 import com.metrial.chrajeshkumar.newspaper.Helper.HandlingViews;
 import com.metrial.chrajeshkumar.newspaper.Helper.Recycle_item_view;
@@ -156,6 +155,8 @@ public class DashBoardActivity extends AppCompatActivity implements NavigationVi
      * See https://g.co/AppIndexing/AndroidStudio for more information.
      */
     private GoogleApiClient client;
+//    FirebaseAnalytics mFirebaseAnalytics;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -170,7 +171,12 @@ public class DashBoardActivity extends AppCompatActivity implements NavigationVi
         //Initilize facebook
         FacebookSdk.sdkInitialize(getApplicationContext());
         AppEventsLogger.activateApp(this);
+        Bundle params = new Bundle();
+        params.putString("image_name", "rajesh");
+        params.putString("full_text", "kumar");
 
+//        mFirebaseAnalytics = new FirebaseAnalytics(null);
+//        mFirebaseAnalytics.logEvent("share_image", params);
 
         try {
             PackageInfo info = getPackageManager().getPackageInfo(
