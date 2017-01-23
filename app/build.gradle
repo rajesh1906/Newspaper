@@ -22,12 +22,12 @@ android {
            *//* proguardFile 'newspaper.pro'*//*
             proguardFiles getDefaultProguardFile('proguard-android.txt')
         }*/
-        debug {
+       /* debug {
             minifyEnabled true
             shrinkResources true
-            /*proguardFile 'newspaper.pro'*/
+            *//*proguardFile 'newspaper.pro'*//*
             proguardFiles getDefaultProguardFile('proguard-android.txt')
-        }
+        }*/
     }
     packagingOptions {
         /*   exclude 'META-INF/LICENSE.txt'
