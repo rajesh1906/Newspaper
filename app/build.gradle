@@ -4,7 +4,9 @@ android {
     compileSdkVersion 23
     buildToolsVersion "24.0.0"
     useLibrary 'org.apache.http.legacy'
-
+    lintOptions {
+        checkReleaseBuilds false
+    }
     defaultConfig {
         applicationId "com.metrial.chrajeshkumar.newspaper"
 //        buildConfigField 'String', 'SECRET_KEY', toJavaCodeString(SECRET_KEY)
@@ -14,18 +16,18 @@ android {
         versionName "1.0"
     }
     buildTypes {
-        release {
+       /* release {
             minifyEnabled true
             shrinkResources true
-           /* proguardFile 'newspaper.pro'*/
-            proguardFiles getDefaultProguardFile('proguard-android.txt')
-        }
-       /* debug {
-            minifyEnabled true
-            shrinkResources true
-          *//*  proguardFile 'newspaper.pro'*//*
+           *//* proguardFile 'newspaper.pro'*//*
             proguardFiles getDefaultProguardFile('proguard-android.txt')
         }*/
+        debug {
+            minifyEnabled true
+            shrinkResources true
+            /*proguardFile 'newspaper.pro'*/
+            proguardFiles getDefaultProguardFile('proguard-android.txt')
+        }
     }
     packagingOptions {
         /*   exclude 'META-INF/LICENSE.txt'

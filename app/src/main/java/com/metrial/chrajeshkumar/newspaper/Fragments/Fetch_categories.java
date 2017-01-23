@@ -35,6 +35,9 @@ public class Fetch_categories extends Fragment implements Activiy_control{
     Class fromActivity;
    public static String for_fetch;
     HashMap<String, String> params = new HashMap<>();
+    public Fetch_categories(){
+
+    }
 
     public Fetch_categories(String for_fetch)
     {

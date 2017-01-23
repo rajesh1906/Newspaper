@@ -32,7 +32,6 @@
                     android:layout_height="?attr/actionBarSize"
                     android:orientation="horizontal"
                     android:visibility="visible">
-
                     <ImageView
                         android:id="@+id/img_header_paper_top"
                         android:layout_width="30dp"
@@ -41,7 +40,6 @@
                         android:layout_marginLeft="10dp"
                         android:src="@mipmap/ic_launcher"
                         android:visibility="visible" />
-
                     <TextView
                         android:id="@+id/txt_header_top"
                         android:layout_width="wrap_content"
@@ -60,6 +58,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
 
+                    android:visibility="gone"
 
                     android:background="#fff"
 
@@ -324,8 +323,6 @@
                         android:verticalSpacing="10dp" />
                 </android.support.v7.widget.CardView>
             </LinearLayout>
-
-
         </RelativeLayout>
 
     </android.support.v4.widget.NestedScrollView>
@@ -361,6 +358,7 @@
             android:layout_marginTop="20dp"
             app:menu_color="@color/colorPrimary"
             app:menu_open="arc_left"
+            android:visibility="gone"
             app:menu_scr="@drawable/share">
 
             <android.support.design.widget.FloatingActionButton
