@@ -51,17 +51,18 @@ public class Fetch_categories extends Fragment implements Activiy_control{
         view = inflater.inflate(R.layout.categories, container, false);
         InitilizeViews(view);
         grid_categories.setNumColumns(2);
-        switch (for_fetch)
-        {
-            case ConStants.SPORTS:
-                grid_categories.setAdapter(new News_deails_adaper(getActivity(), this.getResources().getStringArray(R.array.sports_news), Papers_icon.sports,Fetch_categories.this,for_fetch,true));
-                break;
-            case ConStants.TECHNOLOGY:
-                grid_categories.setAdapter(new News_deails_adaper(getActivity(), this.getResources().getStringArray(R.array.tech_news), Papers_icon.technologies,Fetch_categories.this,for_fetch,false));
-                break;
-            case ConStants.ENTERTAINMENT:
-                grid_categories.setAdapter(new News_deails_adaper(getActivity(), this.getResources().getStringArray(R.array.entertainment), Papers_icon.entertainment,Fetch_categories.this,for_fetch,true));
-                break;
+        if(null!=for_fetch) {
+            switch (for_fetch) {
+                case ConStants.SPORTS:
+                    grid_categories.setAdapter(new News_deails_adaper(getActivity(), this.getResources().getStringArray(R.array.sports_news), Papers_icon.sports, Fetch_categories.this, for_fetch, true));
+                    break;
+                case ConStants.TECHNOLOGY:
+                    grid_categories.setAdapter(new News_deails_adaper(getActivity(), this.getResources().getStringArray(R.array.tech_news), Papers_icon.technologies, Fetch_categories.this, for_fetch, false));
+                    break;
+                case ConStants.ENTERTAINMENT:
+                    grid_categories.setAdapter(new News_deails_adaper(getActivity(), this.getResources().getStringArray(R.array.entertainment), Papers_icon.entertainment, Fetch_categories.this, for_fetch, true));
+                    break;
+            }
         }
 
         grid_categories.setExpanded(true);
@@ -96,13 +97,15 @@ public class Fetch_categories extends Fragment implements Activiy_control{
 
     @Override
     public void onPause() {
-        super.onPause();
-        unbindDrawables(view.findViewById(R.id.gridview_image));
-        System.gc();
+        try {
+            super.onPause();
+            unbindDrawables(view.findViewById(R.id.gridview_image));
+            System.gc();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
 
     }
-
-
     private void unbindDrawables(View view)
     {
         if (view.getBackground() != null)

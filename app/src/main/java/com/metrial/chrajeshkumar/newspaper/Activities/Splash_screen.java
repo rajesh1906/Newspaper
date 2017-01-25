@@ -53,42 +53,63 @@ public class Splash_screen extends AppCompatActivity implements Activiy_control,
             }
         }
 
-        new Thread() {
-            public void run() {
-                try {
-                    sleep(3000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                try {
-                    Message msg = handler.obtainMessage();
-                    handler.sendMessage(msg);
-                } catch (NullPointerException ex) {
-                    Log.e("Handler Exception :", ex.toString());
+        if(!ConStants.GO_TO_HOME_PAGE) {
+            new Thread() {
+                public void run() {
+                    try {
+                        sleep(3000);
 
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    try {
+                        Message msg = handler.obtainMessage();
+                        handler.sendMessage(msg);
+                    } catch (NullPointerException ex) {
+                        Log.e("Handler Exception :", ex.toString());
+
+                    }
                 }
+
+                ;
+            }.start();
+
+            handler = new Handler() {
+                @Override
+                public void handleMessage(Message msg) {
+                    // TODO Auto-generated method stub
+                    super.handleMessage(msg);
+
+                    try {
+                        if (CheckNetwork.isOnline(Splash_screen.this)) {
+                            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+                            transaction.setCustomAnimations(R.anim.fade_in, R.anim.fade_out);
+                            transaction.replace(R.id.container, new Categories(), "Categories");
+                            transaction.commit();
+                        } else {
+                            error = ConStants.NETWORK_CONNECTION_ERROR;
+                            Control.control_flow(ConStants.DIALOG_CONTROL, Splash_screen.this);
+                        }
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
+                }
+            };
+
+        }else{
+            ConStants.GO_TO_HOME_PAGE = false;
+            if (CheckNetwork.isOnline(Splash_screen.this)) {
+                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+                transaction.setCustomAnimations(R.anim.fade_in, R.anim.fade_out);
+                transaction.replace(R.id.container, new Categories(), "Categories");
+                transaction.commit();
+            } else {
+                error = ConStants.NETWORK_CONNECTION_ERROR;
+                Control.control_flow(ConStants.DIALOG_CONTROL, Splash_screen.this);
             }
+        }
 
-            ;
-        }.start();
 
-        handler = new Handler() {
-            @Override
-            public void handleMessage(Message msg) {
-                // TODO Auto-generated method stub
-                super.handleMessage(msg);
-
-                if (CheckNetwork.isOnline(Splash_screen.this)) {
-                    FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-                    transaction.setCustomAnimations(R.anim.fade_in, R.anim.fade_out);
-                    transaction.replace(R.id.container, new Categories(), "Categories");
-                    transaction.commit();
-                } else {
-                    error = ConStants.NETWORK_CONNECTION_ERROR;
-                    Control.control_flow(ConStants.DIALOG_CONTROL, Splash_screen.this);
-                }
-            }
-        };
 
 
     }
@@ -162,20 +183,29 @@ public class Splash_screen extends AppCompatActivity implements Activiy_control,
 
         FragmentManager fragmentManager = getSupportFragmentManager();
         Fragment currentFragment = fragmentManager.findFragmentById(R.id.container);
-        if(null!=currentFragment.getTag())
-        {
-            if (currentFragment.getTag().equals("Fetch_categories")) {
-                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.container, new Categories(), "Categories");
-                transaction.commit();
-            } else if (currentFragment.getTag().equals("Categories")) {
+
+        try {
+            if (null != currentFragment) {
+                if (currentFragment.getTag().equals("Fetch_categories")) {
+                    FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+                    transaction.replace(R.id.container, new Categories(), "Categories");
+                    transaction.commit();
+                } else if (currentFragment.getTag().equals("Categories")) {
+                    Intent intent = new Intent(Intent.ACTION_MAIN);
+                    intent.addCategory(Intent.CATEGORY_HOME);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(intent);
+                    finish();
+                }
+            } else {
                 Intent intent = new Intent(Intent.ACTION_MAIN);
                 intent.addCategory(Intent.CATEGORY_HOME);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
                 finish();
             }
-        }else{
+        }catch (Exception e){
+            e.printStackTrace();
             Intent intent = new Intent(Intent.ACTION_MAIN);
             intent.addCategory(Intent.CATEGORY_HOME);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

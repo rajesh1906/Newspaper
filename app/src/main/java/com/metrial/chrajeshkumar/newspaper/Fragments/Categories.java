@@ -44,8 +44,12 @@ public class Categories extends Fragment {
     @Override
     public void onPause() {
         super.onPause();
-        unbindDrawables(view.findViewById(R.id.gridview_image));
-        System.gc();
+        try {
+            unbindDrawables(view.findViewById(R.id.gridview_image));
+            System.gc();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
 
     }
 

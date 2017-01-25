@@ -320,6 +320,7 @@ public class Dashboard_Detail extends AppCompatActivity implements NavigationVie
     public void backAnimation()
 
     {
+        ConStants.GO_TO_HOME_PAGE = true;
         Intent intent_Home = new Intent(Dashboard_Detail.this,
                 DashBoardActivity.class);
         intent_Home.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -445,7 +446,7 @@ public class Dashboard_Detail extends AppCompatActivity implements NavigationVie
                 animateFAB();
                 break;
             case R.id.fab_home:
-
+                ConStants.GO_TO_HOME_PAGE = true;
                 fromclass = Splash_screen.class;
                 Control.control_flow(ConStants.ACTIVITY_CONTROL, Dashboard_Detail.this);
                 finish();

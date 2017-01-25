@@ -38,6 +38,7 @@ public class ConStants {
     final public static String SPORTS = "sports";
     final public static String TECHNOLOGY = "technology";
     final public static String ENTERTAINMENT = "entertainments";
+    public static boolean GO_TO_HOME_PAGE;
 
    public  enum IDNTIFIACTION{ ENGLISH(1), TELUGU(2), HINDI(3), TAMIL(4),MALAYALAM(5);
         int identifaction;

@@ -42,6 +42,7 @@ import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
 import com.facebook.FacebookSdk;
 import com.facebook.appevents.AppEventsLogger;
+import com.facebook.appevents.internal.Constants;
 import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.facebook.share.model.ShareLinkContent;
@@ -50,7 +51,9 @@ import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.common.api.GoogleApiClient;
 
+import com.metrial.chrajeshkumar.newspaper.Activities.Categories_details;
 import com.metrial.chrajeshkumar.newspaper.Activities.Dashboard_Detail;
+import com.metrial.chrajeshkumar.newspaper.Activities.Splash_screen;
 import com.metrial.chrajeshkumar.newspaper.Activities.Videos_list;
 import com.metrial.chrajeshkumar.newspaper.Adapters.Channel_list_adapter;
 import com.metrial.chrajeshkumar.newspaper.Adapters.Dashboard;
@@ -149,6 +152,7 @@ public class DashBoardActivity extends AppCompatActivity implements NavigationVi
     private static twitter4j.Twitter twitter;
     String consumerKey, consumerSecret, callbackUrl;
     AccessToken accessToken;
+    public static String coming_from="someVal";
     public static String SECRET_KEY="ab76239ef64454356754239ef6210898";
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
@@ -353,11 +357,6 @@ public class DashBoardActivity extends AppCompatActivity implements NavigationVi
 
     @Override
     public void implementation(String message, int position) {
-        Log.e("coming to implementation", "<><>" + this.getResources().getStringArray(R.array.news_channels)[position]);
-
-        Log.e("enmuration value is ", "<><>" + ConStants.IDNTIFIACTION.values()[position]);
-        String tem = "";
-
         if (CheckNetwork.isOnline(this)) {
 
             switch (this.getResources().getStringArray(R.array.news_channels)[position]) {
@@ -456,8 +455,6 @@ public class DashBoardActivity extends AppCompatActivity implements NavigationVi
             Control.control_flow(ConStants.ACTIVITY_CONTROL, DashBoardActivity.this);
             overridePendingTransition(R.anim.left_slide_in, R.anim.left_slide_out);
         } else {
-//            Toast.makeText(this,channel,Toast.LENGTH_LONG).show();
-
             switch (channel) {
                 case ConStants.FACEBOOK:
                     facebook_implementation();
@@ -481,12 +478,11 @@ public class DashBoardActivity extends AppCompatActivity implements NavigationVi
         super.onPause();
         try {
             unbindDrawables(findViewById(R.id.gridview_image));
+            System.gc();
         }catch (Exception e)
         {
             e.printStackTrace();
         }
-        System.gc();
-
     }
 
     private void unbindDrawables(View view)
@@ -746,5 +742,18 @@ public class DashBoardActivity extends AppCompatActivity implements NavigationVi
                     .show();
         }
 
+    }
+
+    @Override
+    public void onBackPressed() {
+//        super.onBackPressed();
+        ConStants.GO_TO_HOME_PAGE= true;
+        Intent intent_Home = new Intent(DashBoardActivity.this,
+                Splash_screen.class);
+        intent_Home.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent_Home);
+        overridePendingTransition(R.anim.anim_slide_in_right,
+                R.anim.left_slide_out);
+        finish();
     }
 }

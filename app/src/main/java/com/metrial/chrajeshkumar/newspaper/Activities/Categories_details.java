@@ -211,7 +211,7 @@ public class Categories_details extends AppCompatActivity implements HandlingVie
                 animateFAB();
                 break;
             case R.id.fab_home:
-
+                ConStants.GO_TO_HOME_PAGE = true;
                 fromclass = Splash_screen.class;
                 Control.control_flow(ConStants.ACTIVITY_CONTROL, Categories_details.this);
                 finish();
