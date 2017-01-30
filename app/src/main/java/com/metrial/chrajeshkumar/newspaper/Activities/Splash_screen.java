@@ -108,10 +108,6 @@ public class Splash_screen extends AppCompatActivity implements Activiy_control,
                 Control.control_flow(ConStants.DIALOG_CONTROL, Splash_screen.this);
             }
         }
-
-
-
-
     }
 
 
