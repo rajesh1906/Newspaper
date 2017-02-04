@@ -27,6 +27,7 @@ import com.google.android.youtube.player.YouTubeInitializationResult;
 import com.google.android.youtube.player.YouTubePlayer;
 import com.google.android.youtube.player.YouTubePlayerView;
 import com.metrial.chrajeshkumar.newspaper.Adapters.Youtube_view_item;
+import com.metrial.chrajeshkumar.newspaper.Callbacks.Api_CallBack;
 import com.metrial.chrajeshkumar.newspaper.Callbacks.Youtube_api_callback;
 import com.metrial.chrajeshkumar.newspaper.Callbacks.Youtube_api_for_duration;
 import com.metrial.chrajeshkumar.newspaper.Helper.APIService;
@@ -128,7 +129,7 @@ public class Videos_list extends YouTubeBaseActivity implements APIService, Hand
         recycler_view.addOnScrollListener(new EndlessScrollListener(recycler_view));
         recycler_view_search.addOnScrollListener(new EndlessScrollListener(recycler_view_search));
         if (CheckNetwork.isOnline(this)) {
-            new Youtube_api_callback(this, channel, start).execute();
+            new Api_CallBack(this, channel, start);
         } else {
             error = ConStants.NETWORK_CONNECTION_ERROR;
             Control.control_flow(ConStants.DIALOG_CONTROL, this);
@@ -146,7 +147,7 @@ public class Videos_list extends YouTubeBaseActivity implements APIService, Hand
                         recycler_view_search.setVisibility(View.VISIBLE);
                         news_dialog.setVisibility(View.VISIBLE);
                         start = 5;
-                        new Youtube_api_callback(Videos_list.this, value, start).execute();
+//                        new Youtube_api_callback(Videos_list.this, value, start).execute();
                     } else {
                         Log.e("error in search", "<><><" + " ediit text ");
                         error = ConStants.ERROR_SEARCH;
@@ -382,7 +383,7 @@ public class Videos_list extends YouTubeBaseActivity implements APIService, Hand
                         if (CheckNetwork.isOnline(Videos_list.this)) {
                             start += 5;
                             news_dialog.setVisibility(View.VISIBLE);
-                            new Youtube_api_callback(Videos_list.this, channel, start).execute();
+//                            new Youtube_api_callback(Videos_list.this, channel, start).execute();
                         } else {
                             error = ConStants.NETWORK_CONNECTION_ERROR;
                             Control.control_flow(ConStants.DIALOG_CONTROL, Videos_list.this);

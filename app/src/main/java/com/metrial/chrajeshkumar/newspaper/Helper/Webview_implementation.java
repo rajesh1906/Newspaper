@@ -24,9 +24,9 @@ public class Webview_implementation {
 
         webview.getSettings().setJavaScriptEnabled(true);
         webview.getSettings().setRenderPriority(WebSettings.RenderPriority.HIGH);
-        webview.getSettings().setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
-        webview.getSettings().setAppCacheEnabled(true);
-        webview.getSettings().setDomStorageEnabled(true);
+//        webview.getSettings().setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
+//        webview.getSettings().setAppCacheEnabled(true);
+//        webview.getSettings().setDomStorageEnabled(true);
         webview.getSettings().setLayoutAlgorithm(WebSettings.LayoutAlgorithm.NARROW_COLUMNS);
         webview.getSettings().setSavePassword(true);
         webview.getSettings().setSaveFormData(true);

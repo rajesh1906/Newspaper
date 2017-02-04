@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 23
-    buildToolsVersion "24.0.0"
+    buildToolsVersion "24.0.2"
     useLibrary 'org.apache.http.legacy'
     lintOptions {
         checkReleaseBuilds false
@@ -12,8 +12,8 @@ android {
 //        buildConfigField 'String', 'SECRET_KEY', toJavaCodeString(SECRET_KEY)
         minSdkVersion 15
         targetSdkVersion 23
-        versionCode 1
-        versionName "1.0"
+        versionCode 3
+        versionName "1.2"
     }
     buildTypes {
        /* release {
@@ -69,6 +69,7 @@ dependencies {
     compile 'com.sa90.materialarcmenu:library:1.4'
     compile 'com.google.android.gms:play-services-appindexing:8.1.0'
     compile files('libs/twitter4j-core-4.0.2.jar')
+    compile 'com.android.volley:volley:1.0.0'
    /* compile 'com.google.android.gms:play-services-tagmanager:9.2.1'*/
 
 
