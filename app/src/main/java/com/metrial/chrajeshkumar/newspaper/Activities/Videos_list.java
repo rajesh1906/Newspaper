@@ -147,7 +147,7 @@ public class Videos_list extends YouTubeBaseActivity implements APIService, Hand
                         recycler_view_search.setVisibility(View.VISIBLE);
                         news_dialog.setVisibility(View.VISIBLE);
                         start = 5;
-//                        new Youtube_api_callback(Videos_list.this, value, start).execute();
+                        new Api_CallBack(Videos_list.this, value, start);
                     } else {
                         Log.e("error in search", "<><><" + " ediit text ");
                         error = ConStants.ERROR_SEARCH;
@@ -237,7 +237,7 @@ public class Videos_list extends YouTubeBaseActivity implements APIService, Hand
             youTubeView.initialize(Config.YOUTUBE_API_KEY, this);
             txt_title_val.setText(mypojo.getItems().get(0).getSnippet().getTitle());
             txt_description_val.setText(mypojo.getItems().get(0).getSnippet().getDescription());
-            new Youtube_api_for_duration(video_id, Videos_list.this).execute();
+//            new Api_CallBack(video_id, Videos_list.this);
         }
 
         if (start == 5) {
@@ -264,7 +264,7 @@ public class Videos_list extends YouTubeBaseActivity implements APIService, Hand
         news_dialog.setVisibility(View.GONE);
         youtube_view_item.notifyDataSetChanged();
 
-//        new Youtube_api_for_duration(mypojo,Videos_list.this).execute();
+        new Youtube_api_for_duration(video_id,Videos_list.this).execute();
 
     }
 
@@ -284,7 +284,7 @@ public class Videos_list extends YouTubeBaseActivity implements APIService, Hand
             txt_title_val.setText(title);
             txt_description_val.setText(description);
             youTubePlayer_outer.loadVideo(video_id);
-            new Youtube_api_for_duration(video_id, Videos_list.this).execute();
+            new Api_CallBack(video_id, Videos_list.this);
         } else {
             error = ConStants.NETWORK_CONNECTION_ERROR;
             Control.control_flow(ConStants.DIALOG_CONTROL, this);
@@ -383,7 +383,7 @@ public class Videos_list extends YouTubeBaseActivity implements APIService, Hand
                         if (CheckNetwork.isOnline(Videos_list.this)) {
                             start += 5;
                             news_dialog.setVisibility(View.VISIBLE);
-//                            new Youtube_api_callback(Videos_list.this, channel, start).execute();
+                            new Api_CallBack(Videos_list.this, channel, start);
                         } else {
                             error = ConStants.NETWORK_CONNECTION_ERROR;
                             Control.control_flow(ConStants.DIALOG_CONTROL, Videos_list.this);

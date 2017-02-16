@@ -276,7 +276,7 @@ public class DashBoardActivity extends AppCompatActivity implements NavigationVi
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
         client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
-        nested_scrollview.setOnScrollChangeListener(new NestedScrollView.OnScrollChangeListener() {
+        /*nested_scrollview.setOnScrollChangeListener(new NestedScrollView.OnScrollChangeListener() {
             @Override
             public void onScrollChange(NestedScrollView v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
                 Log.e("scrollX is shown", "<><" + scrollY);
@@ -294,7 +294,7 @@ public class DashBoardActivity extends AppCompatActivity implements NavigationVi
                     txt_sticky.setText("Malayalam");
                 }
             }
-        });
+        });*/
         initTwitterConfigs();
     }
 
